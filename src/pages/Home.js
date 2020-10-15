@@ -1,12 +1,11 @@
 import React from 'react';
-import Navbar from '../components/complex_comp/navbar_nologged'
 
 
-function Home() {
+function Home(props) {
+  console.log(props.auth.user)
   return (
     <div>
-        <Navbar/>
-        <p>This is home</p>
+        {props.auth.user && props.auth.isAuthenticated &&  (<p>Hola {props.auth.user.username} </p>)}
     </div>
     
   );
