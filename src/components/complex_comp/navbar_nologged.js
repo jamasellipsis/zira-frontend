@@ -1,9 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import { Navbar, Nav} from 'react-bootstrap';
+import { Navbar, Nav, Button } from 'react-bootstrap';
+import Login from '../../auth/Login'
+import Register from '../../auth/Register'
+import { Auth } from 'aws-amplify'
 import './navbar_nologged.css';
 
-const NavbarNologged = () => {
+
+function NavbarNologged(props) {
+
+  const logOut = async e => {
+    e.preventDefault()
+    try {
+      Auth.signOut()
+      props.auth.setAuthStatus(false)
+      props.auth.setUser(null)
+    } catch(error) {
+      console.log(error)
+    }
+  }
+
   return (
     <div>
       <Navbar bg="zira" expand="lg" sticky="top">
@@ -27,10 +43,27 @@ const NavbarNologged = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
-            <Link className="nav-link navbar-font" to='/teach'>Teach</Link>
-            <Link className="nav-link navbar-font" to='/learn'>Learn</Link>
-            <Link className="nav-link navbar-font" to='/login'>Login</Link>
-            <Link className="nav-link navbar-font" to='/join'>Join</Link>
+            {/* In case the authenticated is null */}
+            {!props.auth.isAuthenticated && (
+                <>
+                  <Link className="nav-link" to='/teach'>Teach</Link>
+                  <Link className="nav-link" to='/learn'>Learn</Link>
+                  <Login auth={props.auth} />
+                  <Register/>
+                </>
+              )}
+              {/* In case the authenticated is not null */}
+              {props.auth.isAuthenticated && (
+                <>
+                  <img src={require('../../assets/icons/estrella.png')} alt='star' style={{width: '3%', height: '3%', alignSelf: 'center'}} />
+                  <Link className="nav-link" to='/teach'>Create a class</Link>
+                  <img src={require('../../assets/icons/globo.png')} alt='star' style={{width: '3%', height: '3%', alignSelf: 'center'}} />
+                  <Link className="nav-link" to='/learn'>Find classes</Link>
+                  <img src={require('../../assets/icons/calendar.png')} alt='star' style={{width: '3%', height: '3%', alignSelf: 'center'}} />
+                  <Link className="nav-link" to='/learn'>Schedule</Link>
+                  <Button className="nav-link btn-secondary" onClick={logOut} >Log out</Button>
+                </>
+              )}
           </Nav>
         </Navbar.Collapse>
       </Navbar>

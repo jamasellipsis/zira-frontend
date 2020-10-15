@@ -1,0 +1,14 @@
+.form-control {
+    background-color: #eeeded;
+    border: none;
+}
+
+.input-group-text {
+    background-color: #eeeded;
+    border: none;
+}
+
+.modal-content {
+    margin: auto;
+    width: 75%;
+}
