@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from '../components/complex_comp/footer'
 
 function Teach() {
   return (

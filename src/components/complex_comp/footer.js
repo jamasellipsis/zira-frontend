@@ -6,10 +6,10 @@ import './footer.css';
 const Footer = () => {
     return (
         <div className="container-fluid" style={{backgroundColor:"#40b9c1"}}>
-            <div class="row">
+            <div className="row">
 
                 {/* Left column - Contact us form*/}
-                <div class="col-md-4 text-center">
+                <div className="col-md-4 text-center">
                     <h3 className="light-text" style={{marginTop:"5%", fontWeight:"bold"}}>Contact us</h3>
                     <Form>
                         <Form.Group controlId="formBasicName">
@@ -30,7 +30,7 @@ const Footer = () => {
                 </div>
 
                 {/* Central column - Zira mission and social networks*/}
-                <div class="col-md-4">
+                <div className="col-md-4">
                     <Navbar.Brand href="/" style={{marginTop:"5%"}}>
                         <img
                         alt='ZiraLogo'
@@ -48,14 +48,14 @@ const Footer = () => {
                     className="d-inline-block align-top">
                     </img>
                     </Navbar.Brand>
-                    <div class="container-fluid">
+                    <div className="container-fluid">
                         <br /> <br />
-                        <p class="quotation-text light-text">This project was developed with passion and love for the 
+                        <p className="quotation-text light-text">This project was developed with passion and love for the 
                         Full-stack Developer program in Holberton School.</p>
                         <br /> <br />
                     </div>
                     
-                    <div class="container">
+                    <div className="container">
                         <a href="https://www.instagram.com/?hl=es-la"><img
                         alt='Instagram'
                         src={require('../../assets/icons/instagram.png')}
@@ -92,8 +92,8 @@ const Footer = () => {
                 </div>
 
                 {/*Right column - Contact info */}
-                <div class="col-md-4 my-auto">
-                    <div class="row">
+                <div className="col-md-4 my-auto">
+                    <div className="row">
                         <img
                             alt='Whatsapp'
                             src={require('../../assets/icons/whatsapp.png')}
@@ -104,7 +104,7 @@ const Footer = () => {
                         </img>
                         <p className="light-text my-auto" style={{fontSize:"2.1rem"}}> 318 372 2244</p>
                     </div>
-                    <div class="row">
+                    <div className="row">
                         <img
                             alt='Email'
                             src={require('../../assets/icons/arroba.png')}
@@ -115,7 +115,7 @@ const Footer = () => {
                         </img>
                         <p className="light-text my-auto" style={{fontSize:"2.1rem"}}> unmail@zira.com</p>
                     </div>
-                    <div class="row">
+                    <div className="row">
                         <img
                             alt='Location'
                             src={require('../../assets/icons/locationpin.png')}
@@ -128,7 +128,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div class="footer-copyright text-center py-3 light-text">© 2020 Copyright: Zira
+            <div className="footer-copyright text-center py-3 light-text">© 2020 Copyright: Zira
             </div>          
         </div>
     );

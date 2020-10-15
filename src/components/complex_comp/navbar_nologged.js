@@ -41,8 +41,8 @@ function NavbarNologged(props) {
           </img>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ml-auto">
+        <Navbar.Collapse className='d-flex justify-content-end' id="basic-navbar-nav">
+          <Nav className="d-flex justify-content-end">
             {/* In case the authenticated is null */}
             {!props.auth.isAuthenticated && (
                 <>
