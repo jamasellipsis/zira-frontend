@@ -13,9 +13,9 @@ Gray for some brackgrounds #7F8585 Alpha 50%
 
 Fonts:
 
-Roboto, Arial, Sans serif:
+Roboto, Arial, "Sans serif":
 	links, a, p, from h5 to h6
-Nunito, Arial, sans serif:
+Nunito, Arial, "sans serif":
 	from h1 to h4: 
 
 

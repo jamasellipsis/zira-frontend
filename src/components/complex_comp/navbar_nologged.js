@@ -4,6 +4,7 @@ import { Navbar, Nav, Button } from 'react-bootstrap';
 import Login from '../../auth/Login'
 import Register from '../../auth/Register'
 import { Auth } from 'aws-amplify'
+import './navbar_nologged.css';
 
 
 function NavbarNologged(props) {
@@ -21,17 +22,29 @@ function NavbarNologged(props) {
 
   return (
     <div>
-      <Navbar bg="dark" expand="lg" variant="dark">
-        <div className="container mr-0">
-          <Link className='navbar-brand' to='/'>
-            <img src="http://placehold.it/150x50?text=Logo" alt=""></img>
-          </Link>
-          <Navbar.Brand href="/">Zira</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav d-flex justify-content-end">
-            <Nav className="ml-auto">
-              {/* In case the authenticated is null */}
-              {!props.auth.isAuthenticated && (
+      <Navbar bg="zira" expand="lg" sticky="top">
+        <Navbar.Brand href="/">
+          <img
+          alt='ZiraLogo'
+          src={require('../../assets/name_and_logo/WhiteLogo.png')}
+          width="40"
+          height="40"
+          className="d-inline-block align-top">
+          </img>
+        </Navbar.Brand>
+        <Navbar.Brand href="/">
+          <img
+          alt='ZiraLogo'
+          src={require('../../assets/name_and_logo/WhiteName.png')}
+          height="40"
+          className="d-inline-block align-top">
+          </img>
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="ml-auto">
+            {/* In case the authenticated is null */}
+            {!props.auth.isAuthenticated && (
                 <>
                   <Link className="nav-link" to='/teach'>Teach</Link>
                   <Link className="nav-link" to='/learn'>Learn</Link>
@@ -51,10 +64,8 @@ function NavbarNologged(props) {
                   <Button className="nav-link btn-secondary" onClick={logOut} >Log out</Button>
                 </>
               )}
-
-            </Nav>
-          </Navbar.Collapse>
-        </div>
+          </Nav>
+        </Navbar.Collapse>
       </Navbar>
     </div>
   );

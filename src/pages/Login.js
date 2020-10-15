@@ -1,13 +1,13 @@
 import React from 'react';
 import Footer from '../components/complex_comp/footer';
 
-function Learn() {
+function Login() {
   return (
     <div>
-        <p>This is learn</p>
+        <p>This is Login</p>
         <Footer/>
     </div>
   );
 }
 
-export default Learn;
+export default Login;
