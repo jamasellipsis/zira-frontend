@@ -49,8 +49,8 @@ function NavbarNologged(props) {
             {/* In case the authenticated is null */}
             {!props.auth.isAuthenticated && (
                 <>
-                  <Link className="nav-link" to='/teach'>Teach</Link>
-                  <Link className="nav-link" to='/learn'>Learn</Link>
+                  <Link className="light-text nav-link" to='/teach'>Teach</Link>
+                  <Link className="light-text nav-link" to='/learn'>Learn</Link>
                   <Login auth={props.auth} />
                   <Register/>
                 </>

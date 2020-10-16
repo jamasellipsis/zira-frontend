@@ -35,7 +35,7 @@ function Register(props) {
     return (
         <>
         <div >
-            <Button className="nav-link btn-secondary ml-2" onClick={() => setOpenModal(true)}>Sign up</Button>
+            <Button className="nav-link ml-2 btnSignup" onClick={() => setOpenModal(true)}>Sign up</Button>
             <Modal show={openModal} onHide={() => setOpenModal(false)}>
             <Form className='p-5' onSubmit={submit}>
                 <div className='text-center' >
@@ -72,7 +72,7 @@ function Register(props) {
                     <Form.Control name='password' type="password" placeholder="Password" />
                 </InputGroup>
                {/*  <Form.Check name='check' type="checkbox" label="Check me out" className='mt-4 mb-4'/> */}
-                <Button variant="primary" type="submit" className='mt-4' > Sign up </Button>
+                <Button variant="primary" type="submit" className='mt-4 btnZira' > Sign up </Button>
                 </div>
             </Form>
             </Modal>
