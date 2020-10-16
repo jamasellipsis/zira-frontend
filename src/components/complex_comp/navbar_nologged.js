@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { Navbar, Nav, Button } from 'react-bootstrap';
 import Login from '../../auth/Login'
 import Register from '../../auth/Register'
@@ -8,6 +8,8 @@ import './navbar_nologged.css';
 
 
 function NavbarNologged(props) {
+
+  const history = useHistory()
 
   const logOut = async e => {
     e.preventDefault()
@@ -18,12 +20,13 @@ function NavbarNologged(props) {
     } catch(error) {
       console.log(error)
     }
+    history.push("/")
   }
 
   return (
     <div>
       <Navbar bg="zira" expand="lg" sticky="top">
-        <Navbar.Brand href="/">
+        <Navbar.Brand href={!props.auth.isAuthenticated ? '/' : '/dashboard'}>
           <img
           alt='ZiraLogo'
           src={require('../../assets/name_and_logo/WhiteLogo.png')}
@@ -32,7 +35,7 @@ function NavbarNologged(props) {
           className="d-inline-block align-top">
           </img>
         </Navbar.Brand>
-        <Navbar.Brand href="/">
+        <Navbar.Brand href={!props.auth.isAuthenticated ? '/' : '/dashboard'}>
           <img
           alt='ZiraLogo'
           src={require('../../assets/name_and_logo/WhiteName.png')}

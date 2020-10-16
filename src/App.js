@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Home from './pages/Home'
 import Teach from './pages/Teach'
 import Learn from './pages/Learn'
+import Dashboard from './pages/Dashboard'
 import Navbar from './components/complex_comp/navbar_nologged'
+import Footer from './components/complex_comp/footer'
 import { Auth } from 'aws-amplify'
-
 import './App.css';
 
 class App extends Component {
@@ -41,7 +42,7 @@ class App extends Component {
       isAuthenticated: this.state.isAuthenticated,
       user: this.state.user,
       setAuthStatus: this.setAuthStatus,
-      setUser: this.setUser
+      setUser: this.setUser,
     }
     return (
       !this.state.isAuthenticating && 
@@ -52,7 +53,9 @@ class App extends Component {
             <Route path='/' exact render={(props) => <Home {...props} auth={authProps}/>} />
             <Route path='/teach' exact render={(props) => <Teach {...props} auth={authProps}/>}/>
             <Route path='/learn' exact render={(props) => <Learn {...props} auth={authProps}/>}/>
+            <Route path='/dashboard' exact render={(props) => <Dashboard {...props} auth={authProps}/>}/>
           </Switch>
+           <Footer/>
         </div>
       </Router>
     )
