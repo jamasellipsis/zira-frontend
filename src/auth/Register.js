@@ -1,4 +1,4 @@
-import { Modal, Form, Button, InputGroup, FormControl } from 'react-bootstrap' 
+import { Modal, Form, Button, InputGroup, FormControl  } from 'react-bootstrap' 
 import React, {useState} from 'react';
 import { Auth } from 'aws-amplify'
 /* import Alerta from '../components/complex_comp/Alert' */
@@ -28,7 +28,6 @@ function Register(props) {
             })
             setError({cognito: null})
         }catch(error){
-            
             setError({cognito: error.message})
         }
     }

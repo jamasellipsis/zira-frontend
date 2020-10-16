@@ -1,9 +1,11 @@
 import { Modal, Form, Button, InputGroup, FormControl } from 'react-bootstrap' 
 import React, {useState} from 'react';
 import { Auth } from 'aws-amplify'
+import { useHistory } from 'react-router-dom'
 import './Login.css'
 
 function Login(props) {
+  const history = useHistory()
   const [openModal, setOpenModal] = useState(false)
   const [error, setError] = useState({cognito: null})
 
@@ -21,8 +23,8 @@ function Login(props) {
       const user = await Auth.signIn(username, password)
       props.auth.setAuthStatus(true)
       props.auth.setUser(user)
-        
       setError({cognito: null})
+      history.push('/dashboard')
     }catch(error){
       setError({cognito: error.message})
     }
