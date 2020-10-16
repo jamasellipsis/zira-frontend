@@ -13,8 +13,8 @@ function Home(props) {
     <div>
         <Banner/>
         <Card/>
-        <Testimonial/>
         <ClassesCarousel/>
+        <Testimonial/>
         <ZiraCharacs/>
         <OurTeam/>
         <MeetTeachers/>

@@ -2,7 +2,7 @@ import React from 'react';
 
 const Card = () => {
     return (
-        <div className="card">
+        <div className="card border-0 mb-4">
             <div className="card-body">
             <h2 className="card-title" style={{fontWeight:"bold"}}>Interactive Live Classes</h2>
             <p className="card-text">Explore any interest over live video chat and interactive classes! Discover fun, social, and innovative learning experiences.</p>

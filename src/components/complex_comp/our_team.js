@@ -1,4 +1,6 @@
 import React from 'react';
+import Carousel from 'react-elastic-carousel';
+import './carou.css';
 
 /* Social networks icons */
 const linkedinIcon = require('../../assets/icons/twitter.png')
@@ -37,30 +39,42 @@ const members = [{
 
 /* Out Team section */
 class OurTeam extends React.Component{
-    render (){
+    constructor(props) {
+        super(props)
+        this.breakPoints = [
+          { width: 1, itemsToShow: 1, pagination: false  },
+          { width: 700, itemsToShow: 2, pagination: false },
+          { width: 900, itemsToShow: 3, pagination: false },
+          { width: 1000, itemsToShow: 5, pagination: false  },
+        ]
+      }
+    render() {
         return (
-            <div className="container-fluid mt-4 pt-4" style={{backgroundColor:"#94D0D3"}}>
-                <h2>Our Team</h2>
-                <div className="row mt-4">
-                    {/*Individual cards: */}
-                    {members.map((i) => {
-                        return(
-                            <div className="col-sm-2 mx-auto">
-                                <div className="card border-0" style={{backgroundColor:"#94D0D3"}}>
-                                    <img className="img-fluid rounded-circle w-90 mx-auto" alt="" src={i.photourl}></img>
-                                    <div className="card-body">
-                                        <h4 className="card-title text-bold">{i.name}</h4>
-                                        <h5 className="card-title">{i.rol}</h5>
-                                        <a href={i.linkedinurl} target="_blank" rel="noopener noreferrer"> <img src={linkedinIcon} alt="linkedin"></img> </a>
-                                    </div>
-                                </div>
-                            </div>        
-                        )
-                    })
-                    }                
+            <div className="container-fluid" style={{backgroundColor:"#94D0D3"}}>
+                <div className="row mx-auto">
+                    <h1 className="mx-auto mt-3">Our Team</h1>
                 </div>
+                <Carousel breakPoints={this.breakPoints} enableAutoPlay autoPlaySpeed={3000} style={{backgroundColor:"#94D0D3"}}>
+                {/*Individual cards: */}
+                {members.map((i) => {
+                    return(
+                        <div className="col mx-auto mt-3">
+                        <div className="card border-0" style={{backgroundColor:"#94D0D3", height:"100%"}}>
+                            <img className="img-fluid rounded-circle w-90 mx-auto" alt="" src={i.photourl} style={{height:"50%"}}></img>
+                            <div className="card-body" style={{height:"50%"}}>
+                                <h4 className="card-title .text-wrap">{i.name}</h4>
+                                <h5 className="card-title">{i.rol}</h5>
+                                <a href={i.linkedinurl} target="_blank" rel="noopener noreferrer" style={{height:"20%"}}> <img src={linkedinIcon} alt="linkedin"></img> </a>
+                            </div>
+                        </div>
+                        </div>  
+                    )
+                    })
+                }
+                </Carousel>
             </div>
+            
         )}
-}
+    }
 
 export default OurTeam;
