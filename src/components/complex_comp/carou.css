@@ -1,0 +1,14 @@
+/* round buttons on hover */
+.rec.rec-arrow:hover{
+    color: black !important;
+}
+/* hide disabled buttons */
+.rec.rec-arrow:disabled {
+    visibility: hidden;
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+.chowzb {
+    background-color: transparent !important;
+    box-shadow: none !important;
+}

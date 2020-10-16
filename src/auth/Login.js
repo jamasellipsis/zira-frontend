@@ -30,7 +30,7 @@ function Login(props) {
 
     return (
     <div>
-      <Button className="nav-link" onClick={() => setOpenModal(true)}>Log in</Button>
+      <Button className="nav-link btnSend" onClick={() => setOpenModal(true)}>Log in</Button>
       <Modal show={openModal} 
         onHide={() => setOpenModal(false)} >
         <Form className='p-5' onSubmit={submit} >
@@ -56,7 +56,7 @@ function Login(props) {
               <Form.Control name='password' type="password" placeholder="Password" />
             </InputGroup>
             {/* <Form.Check name='check' type="checkbox" label="Check me out" className='mt-4 mb-4'/> */}
-            <Button variant="primary" type="submit" className='mt-4'> Log in </Button>
+            <Button variant="primary" type="submit" className='mt-4 btnZira'> Log in </Button>
           </div>
         </Form>
       </Modal>
