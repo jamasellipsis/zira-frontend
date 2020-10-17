@@ -52,7 +52,7 @@ function NavbarNologged(props) {
                   <Link className="light-text nav-link" to='/teach'>Teach</Link>
                   <Link className="light-text nav-link" to='/learn'>Learn</Link>
                   <Login auth={props.auth} />
-                  <Register/>
+                  <Register buttonName='Sign up' />
                 </>
               )}
               {/* In case the authenticated is not null */}
