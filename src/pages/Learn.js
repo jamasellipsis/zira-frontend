@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import ClassCard from '../components/simple_comp/class_card_search'
 import ApiClasses from '../api/Classes'
+import { Link} from 'react-router-dom'
 
 function Learn() {
   const [data, setData] = useState([])
 
   useEffect(() => {
-    ApiClasses.getAll()
-    .then(res => {
-      setData(res.data)
-    })
-    .catch(err => {
-      console.log(err)
-    })
+    if (data.length === 0) {
+      ApiClasses.getAll()
+      .then(res => {
+        setData(res.data)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    }
   })
 
   return (
@@ -24,7 +27,16 @@ function Learn() {
           aria-label="Search"/>
       </form>
       {data.map((value) => {
-        return <ClassCard title= {value.name} description={value.description} time='10 hrs' max='muchas personas' price={value.cost}/>
+        return <Link to={'/class/' + value.id}>
+            <ClassCard 
+              title={value.name}
+              description={value.description}
+              time='10 hrs'
+              max='muchas personas'
+              price={value.cost}
+              key={value.id}
+            />
+          </Link>
       })}
     </div>
   );

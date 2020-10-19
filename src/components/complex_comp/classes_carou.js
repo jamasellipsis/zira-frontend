@@ -68,7 +68,7 @@ class ClassesCarou extends React.Component {
                         <p className="card-title">{i.description}</p>
                     </div>
                     <div className="card-body border">
-                        <a href="#"><img src={i.teacher_photo} className="" alt="teacher"></img></a>
+                        <a href="/"><img src={i.teacher_photo} className="" alt="teacher"></img></a>
                         <h4 className="card-title text-bold">{i.teache_name}</h4>
                     </div>
                 </div>
