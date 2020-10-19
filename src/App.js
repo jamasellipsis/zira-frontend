@@ -4,16 +4,20 @@ import Home from './pages/Home'
 import Teach from './pages/Teach'
 import Learn from './pages/Learn'
 import Dashboard from './pages/Dashboard'
+import Class from './pages/Class'
 import Navbar from './components/complex_comp/navbar_nologged'
 import Footer from './components/complex_comp/footer'
 import { Auth } from 'aws-amplify'
+import ApiUsers from './api/Users'
 import './App.css';
+
 
 class App extends Component {
   state = {
     isAuthenticated: false,
     isAuthenticating: true,
-    user: null
+    user: null,
+    userData: null
   }
 
   setAuthStatus = authenticated => {
@@ -24,12 +28,17 @@ class App extends Component {
     this.setState({user: user})
   }
 
+  setUserData = user => {
+    this.setState({userData: user})
+  }
+
   async componentDidMount() {
     try{
       await Auth.currentSession()
       this.setAuthStatus(true)
       const user = await Auth.currentAuthenticatedUser()
       this.setUser(user)
+      ApiUsers.getUserByName(user.attributes.name).then((res) => {this.setUserData(res.data[0])})
     } catch(error){
       console.log(error)
     }
@@ -41,8 +50,10 @@ class App extends Component {
     const authProps = {
       isAuthenticated: this.state.isAuthenticated,
       user: this.state.user,
+      userData: this.state.userData,
       setAuthStatus: this.setAuthStatus,
       setUser: this.setUser,
+      setUserData: this.setUserData
     }
     return (
       !this.state.isAuthenticating && 
@@ -54,6 +65,7 @@ class App extends Component {
             <Route path='/teach' exact render={(props) => <Teach {...props} auth={authProps}/>}/>
             <Route path='/learn' exact render={(props) => <Learn {...props} auth={authProps}/>}/>
             <Route path='/dashboard' exact render={(props) => <Dashboard {...props} auth={authProps}/>}/>
+            <Route path='/class/:idClass' exact render={(props) => <Class {...props} auth={authProps}/>}/>
           </Switch>
            <Footer/>
         </div>

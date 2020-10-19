@@ -2,6 +2,7 @@ import { Modal, Form, Button, InputGroup, FormControl } from 'react-bootstrap'
 import React, {useState} from 'react';
 import { Auth } from 'aws-amplify'
 import { useHistory } from 'react-router-dom'
+import ApiUsers from '../api/Users'
 import './Login.css'
 
 function Login(props) {
@@ -12,12 +13,13 @@ function Login(props) {
   const submit = async e => {
     e.preventDefault()
     const formData = new FormData(e.target),
-          userData = Object.fromEntries(formData.entries())      
-    console.log(userData)
+          userData = Object.fromEntries(formData.entries())
 
 
     // AWS cognito
     const { username, password } = userData
+
+    ApiUsers.getUserByName(username).then((res) => {props.auth.setUserData(res.data[0])})
 
     try {
       const user = await Auth.signIn(username, password)

@@ -70,11 +70,11 @@ class ClassesCarousel extends React.Component {
                         <p className="card-title">{i.description}</p>
                     </div>
                     <div className="card-body my-0 py-0" style={{height:"4%"}}>
-                        <a href="#" class="card-link">Read More</a>
+                        <a href="/" class="card-link">Read More</a>
                     </div>
                     <div className="row" style={{height:"17%", overflow:"hidden"}}>
                         <div className="col-4 my-auto">
-                            <a href="#"><img src={i.teacher_photo} className="rounded-circle img-thumbnail my-auto ml-4" alt="teacher"></img></a>
+                            <a href="/"><img src={i.teacher_photo} className="rounded-circle img-thumbnail my-auto ml-4" alt="teacher"></img></a>
                         </div>
                         <div className="col-6 m-auto">
                             <h6 className="card-title text-bold my-auto text-left">{i.teache_name}</h6>
