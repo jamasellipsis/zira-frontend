@@ -1,6 +1,7 @@
 import { Modal, Form, Button, InputGroup, FormControl  } from 'react-bootstrap' 
 import React, {useState} from 'react';
 import { Auth } from 'aws-amplify'
+import ApiUsers from '../api/Users'
 /* import Alerta from '../components/complex_comp/Alert' */
 
 
@@ -15,7 +16,7 @@ function Register(props) {
             userData = Object.fromEntries(formData.entries())
 
         // AWS cognito
-        const { name, username, email, password } = userData
+        const { first_name, username, email, password } = userData
 
         try {
             await Auth.signUp({
@@ -23,11 +24,20 @@ function Register(props) {
                 password,
                 attributes: {
                     email: email,
-                    name: name
+                    name: first_name
                 }
             })
+            ApiUsers.singUpUser(userData)
+                .then(response => {
+                    console.log(response)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
             setError({cognito: null})
+            setOpenModal(false)
         }catch(error){
+            console.log(userData)
             setError({cognito: error.message})
         }
     }
@@ -35,7 +45,7 @@ function Register(props) {
     return (
         <>
         <div >
-            <Button className="nav-link mx-lg-2 mx-auto btnSignup mt-1" onClick={() => setOpenModal(true)}>Sign up</Button>
+            <Button className="nav-link mx-lg-2 mx-auto btnSignup mt-1" onClick={() => setOpenModal(true)}>{props.buttonName}</Button>
             <Modal show={openModal} onHide={() => setOpenModal(false)}>
             <Form className='p-5' onSubmit={submit}>
                 <div className='text-center' >
@@ -57,7 +67,7 @@ function Register(props) {
                     <InputGroup.Prepend>
                     <InputGroup.Text id="basic-addon1" className='gray'><img src={require('../assets/icons/name.png')} width='20px' alt='name' /></InputGroup.Text>
                     </InputGroup.Prepend>
-                    <FormControl name='name' placeholder="Name"/>
+                    <FormControl name='first_name' placeholder="Name"/>
                 </InputGroup>
                 <InputGroup className="mb-3">
                     <InputGroup.Prepend>

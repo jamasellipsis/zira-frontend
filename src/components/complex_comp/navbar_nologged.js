@@ -17,6 +17,7 @@ function NavbarNologged(props) {
       Auth.signOut()
       props.auth.setAuthStatus(false)
       props.auth.setUser(null)
+      props.auth.setUserData(null)
     } catch(error) {
       console.log(error)
     }
@@ -52,7 +53,7 @@ function NavbarNologged(props) {
                   <Nav.Link className="light-text nav-link m-auto" to='/teach'>Teach</Nav.Link>
                   <Nav.Link className="light-text nav-link m-auto" to='/learn'>Learn</Nav.Link>
                   <Login auth={props.auth}/>
-                  <Register/>
+                  <Register buttonName='Sign up' />
                 </>
               )}
               {/* In case the authenticated is not null */}

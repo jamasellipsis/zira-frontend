@@ -1,4 +1,5 @@
 import React from 'react';
+import Register from '../../auth/Register'
 import './banner.css';
 
 const Banner = () => {
@@ -8,7 +9,7 @@ const Banner = () => {
             <h2 className="mb-4 light-text text-left ml-5">
                 Interactive Live Classes
             </h2>
-            <a href="/join" className=" float-left btn btn-primary btnZira ml-5">Join for free</a>
+            <Register buttonName='Join for free' />
                 </div>
         </div>
     );
