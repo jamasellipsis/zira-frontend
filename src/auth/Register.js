@@ -45,7 +45,7 @@ function Register(props) {
     return (
         <>
         <div >
-            <Button className="nav-link ml-2 btnSignup" onClick={() => setOpenModal(true)}>{props.buttonName}</Button>
+            <Button className="nav-link mx-lg-2 mx-auto btnSignup mt-1" onClick={() => setOpenModal(true)}>{props.buttonName}</Button>
             <Modal show={openModal} onHide={() => setOpenModal(false)}>
             <Form className='p-5' onSubmit={submit}>
                 <div className='text-center' >

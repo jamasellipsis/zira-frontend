@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom'
-import { Navbar, Nav, Button } from 'react-bootstrap';
+import { Form, Navbar, Nav, Button } from 'react-bootstrap';
 import Login from '../../auth/Login'
 import Register from '../../auth/Register'
 import { Auth } from 'aws-amplify'
@@ -26,7 +26,7 @@ function NavbarNologged(props) {
 
   return (
     <div>
-      <Navbar bg="zira" expand="lg" sticky="top">
+      <Navbar bg="zira" expand="md" sticky="top">
         <Navbar.Brand href={!props.auth.isAuthenticated ? '/' : '/dashboard'}>
           <img
           alt='ZiraLogo'
@@ -45,27 +45,27 @@ function NavbarNologged(props) {
           </img>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse className='d-flex justify-content-end' id="basic-navbar-nav">
-          <Nav className="d-flex justify-content-end">
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="ml-auto">
             {/* In case the authenticated is null */}
             {!props.auth.isAuthenticated && (
                 <>
-                  <Link className="light-text nav-link" to='/teach'>Teach</Link>
-                  <Link className="light-text nav-link" to='/learn'>Learn</Link>
-                  <Login auth={props.auth} />
+                  <Nav.Link className="light-text nav-link m-auto" to='/teach'>Teach</Nav.Link>
+                  <Nav.Link className="light-text nav-link m-auto" to='/learn'>Learn</Nav.Link>
+                  <Login auth={props.auth}/>
                   <Register buttonName='Sign up' />
                 </>
               )}
               {/* In case the authenticated is not null */}
               {props.auth.isAuthenticated && (
                 <>
-                  <img src={require('../../assets/icons/estrella.png')} alt='star' style={{width: '3%', height: '3%', alignSelf: 'center'}} />
-                  <Link className="nav-link" to='/teach'>Create a class</Link>
-                  <img src={require('../../assets/icons/globo.png')} alt='star' style={{width: '3%', height: '3%', alignSelf: 'center'}} />
-                  <Link className="nav-link" to='/learn'>Find classes</Link>
-                  <img src={require('../../assets/icons/calendar.png')} alt='star' style={{width: '3%', height: '3%', alignSelf: 'center'}} />
-                  <Link className="nav-link" to='/learn'>Schedule</Link>
-                  <Button className="nav-link btn-secondary" onClick={logOut} >Log out</Button>
+                  <img src={require('../../assets/icons/create.svg')} alt='star' style={{width: '3%', height: '3%', alignSelf: 'center'}} />
+                  <Nav.Link className="nav-link light-text" to='/teach'>Create a class</Nav.Link>
+                  <img src={require('../../assets/icons/search.svg')} alt='star' style={{width: '3%', height: '3%', alignSelf: 'center'}} />
+                  <Nav.Link className="nav-link light-text" to='/learn'>Find classes</Nav.Link>
+                  <img src={require('../../assets/icons/calendar.svg')} alt='star' style={{width: '3%', height: '3%', alignSelf: 'center'}} />
+                  <Nav.Link className="nav-link light-text" to='/learn'>Schedule</Nav.Link>
+                  <Button className="nav-link btn-primary btnSend" onClick={logOut} >Log out</Button>
                 </>
               )}
           </Nav>

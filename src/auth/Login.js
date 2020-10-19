@@ -34,7 +34,7 @@ function Login(props) {
 
     return (
     <div>
-      <Button className="nav-link btnSend" onClick={() => setOpenModal(true)}>Log in</Button>
+      <Button className="nav-link btnSend mx-auto my-1" onClick={() => setOpenModal(true)}>Log in</Button>
       <Modal show={openModal} 
         onHide={() => setOpenModal(false)} >
         <Form className='p-5' onSubmit={submit} >
