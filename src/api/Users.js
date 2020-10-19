@@ -11,6 +11,15 @@ class ApiUsers {
     singUpUser = (userData) => {
         return axios.post(this.URL + '/users', userData, this.options)
     }
+    getUserByName = (userName) => {
+        return axios.get(this.URL + '/users/' + userName)
+    }
+    getUserById = (userId) => {
+        return axios.get(this.URL + '/users/id/' + userId)
+    }
+    getClasses = (userId) => {
+        return axios.get(this.URL + '/users/'+userId+'/classes' )
+    }
 }
 
 export default (new ApiUsers());

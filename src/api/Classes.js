@@ -8,10 +8,13 @@ class ApiClasses {
             'Content-type': 'application/json'
         }
       };
-
     
-    getAll = (userData) => {
+    getAll = () => {
         return axios.get(this.URL + '/classes')
+    }
+
+    getById = (idClass) => {
+        return axios.get(this.URL + '/classes/' + idClass)
     }
 }
 
