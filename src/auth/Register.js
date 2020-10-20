@@ -6,7 +6,6 @@ import ApiUsers from '../api/Users'
 
 
 function Register(props) {
-    const [openModal, setOpenModal] = useState(props.open)
     const [error, setError] = useState({cognito: null})
 
     const submit = async e => {
@@ -35,7 +34,7 @@ function Register(props) {
                     console.log(err)
                 })
             setError({cognito: null})
-            setOpenModal(false)
+            props.setOpenModal(false)
         }catch(error){
             console.log(userData)
             setError({cognito: error.message})
@@ -45,8 +44,7 @@ function Register(props) {
     return (
         <>
         <div >
-            <Button className="nav-link mx-lg-2 mx-auto btnSignup mt-1" onClick={() => setOpenModal(true)}>{props.buttonName}</Button>
-            <Modal show={openModal} onHide={() => setOpenModal(false)}>
+            <Modal show={props.openModal} onHide={() => props.setOpenModal(false)}>
             <Form className='p-5' onSubmit={submit}>
                 <div className='text-center' >
                 <img src= {require('../assets/name_and_logo/GreenLogo.png')} className='mb-5' alt='Zira-logo' />

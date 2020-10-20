@@ -1,6 +1,7 @@
 import React from 'react';
 import Carousel from 'react-elastic-carousel';
 import './carou.css';
+import ApiClasses from '../../api/Classes'
 
 /*Classes's info*/
 const classes = [{
@@ -41,22 +42,33 @@ const classes = [{
 
   /*This component creates the carousel */
 class ClassesCarousel extends React.Component {
-    constructor(props) {
-    super(props)
-    this.breakPoints = [
-        { width: 1, itemsToShow: 1, pagination: false  },
-        { width: 400, itemsToShow: 2, pagination: false  },
-        { width: 550, itemsToShow: 3, pagination: false },
-        { width: 850, itemsToShow: 4, pagination: false  },
-        { width: 1750, itemsToShow: 6, pagination: false  },
-    ]
+    state = {
+        classes: []
+    }
 
+    setClasses = clas => {
+        this.setState({...this.state, classes: clas})
+    }
+    constructor(props) {
+        super(props)
+        this.breakPoints = [
+            { width: 1, itemsToShow: 1, pagination: false  },
+            { width: 400, itemsToShow: 2, pagination: false  },
+            { width: 550, itemsToShow: 3, pagination: false },
+            { width: 850, itemsToShow: 4, pagination: false  },
+            { width: 1750, itemsToShow: 6, pagination: false  },
+        ]
+
+        ApiClasses.getAll()
+            .then(response => {
+                this.setClasses(response.data)
+            })
     }
     render() {
     return (
         <Carousel breakPoints={this.breakPoints} enableAutoPlay autoPlaySpeed={3000}>
         {/*Individual cards: */}
-        {classes.map((i) => {
+        {this.state.classes.map((i) => {
             return(
             <div className="col mx-auto mb-5" style={{height:"500px", overflow:"hidden"}}>
                 <div className="card rounded w-100 shadow" style={{height:"100%", overflow:"hidden"}}>

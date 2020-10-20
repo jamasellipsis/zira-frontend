@@ -1,26 +1,21 @@
 import React, {useState} from 'react'
-import { Button, Alert } from 'react-bootstrap'
-
+import { Modal, Form, Button, InputGroup, FormControl } from 'react-bootstrap' 
 
 function Alerta(props) {
     const [show, setShow] = useState(true);
   
+
     return (
-      <>
-        <Alert show={show} variant="success" className='alerta'>
-        <Alert.Heading>{props.title}</Alert.Heading>
-          <p>
-            {props.description}
-          </p>
-          <hr />
-          <div className="d-flex justify-content-end">
-            <Button onClick={() => setShow(false)} variant="outline-success">
-                {props.close || 'Close'}
-            </Button>
-          </div>
-        </Alert>
-      </>
-    );
+        <Modal show={props.show} 
+          onHide={() => props.setShow(false)} >
+          <Form className='p-5' >
+            <div className='text-center' >
+              
+              <Button variant="primary" className='mt-4 btnZira'> {props.btnTitle} </Button>
+            </div>
+          </Form>
+        </Modal>
+    )
   }
 
 

@@ -2,12 +2,16 @@ import React, { useEffect, useState } from 'react';
 import ApiClasses from '../api/Classes'
 import ApiUsers from '../api/Users'
 import ApiUserClass from '../api/userClass'
+import Alert from '../components/complex_comp/Alert'
+import Login from '../auth/Login'
 
 
 function Class(props) {
     const [classObj, setClass] = useState(null)
     const [teacher, setTeacher] = useState(null)
- 
+    const [openAlert, setOpenAlert] = useState(false)
+    const [openLogin, setOpenLogin] = useState(false)
+
     useEffect(() => {
         if (!classObj) {
             ApiClasses.getById(props.match.params.idClass)
@@ -25,10 +29,16 @@ function Class(props) {
 
     const enroll = e => {
         e.preventDefault()
+        if (!props.auth.isAuthenticated) {
+            console.log('por favor registrate')
+            setOpenLogin(true)
+            return
+        }
         if (props.auth.userData.id !== classObj.teacherId) {
             ApiUserClass.joinClass({userId: props.auth.userData.id, classId: classObj.id, status: 'current'})
             .then((res) => {
                 console.log(res)
+                setOpenAlert(true)
             })
             .catch((err) => {
                 console.log(err)
@@ -41,9 +51,11 @@ function Class(props) {
 
     return classObj && teacher ?
             <div className='d-flex flex-column' >
+                <Login auth={props.auth} openModal={openLogin} setOpenModal={setOpenLogin} />
+                <Alert show={openAlert} setShow={setOpenAlert} btnTitle='close' />
                 <div className='container d-flex justify-content-between' >
                     <div className='d-flex flex-column justify-content-around' >
-                        <h1 className='text-left' >{classObj.name}</h1>
+                        <h1 className='text-left'>{classObj.name}</h1>
                         <p>{classObj.description}</p>
                         <h2 className='text-left'>{teacher.first_name + ' ' + teacher.last_name } </h2>
                         <button onClick={enroll} className="btn btn-primary btnZira w-50">Enroll now!!!!!</button>

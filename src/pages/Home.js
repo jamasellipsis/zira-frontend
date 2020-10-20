@@ -11,7 +11,7 @@ import ClassesCarousel from '../components/complex_comp/classes_carou';
 function Home(props) {
   return (
     <div>
-        <Banner/>
+        <Banner auth={props.auth}/>
         <Card/>
         <ClassesCarousel/>
         <Testimonial/>

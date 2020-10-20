@@ -7,7 +7,6 @@ import './Login.css'
 
 function Login(props) {
   const history = useHistory()
-  const [openModal, setOpenModal] = useState(false)
   const [error, setError] = useState({cognito: null})
 
   const submit = async e => {
@@ -34,9 +33,8 @@ function Login(props) {
 
     return (
     <div>
-      <Button className="nav-link btnSend mx-auto my-1" onClick={() => setOpenModal(true)}>Log in</Button>
-      <Modal show={openModal} 
-        onHide={() => setOpenModal(false)} >
+      <Modal show={props.openModal}
+        onHide={() => props.setOpenModal(false)} >
         <Form className='p-5' onSubmit={submit} >
           <div className='text-center' >
             <img src= {require('../assets/name_and_logo/GreenLogo.png')} className='mb-5' alt='Zira-logo' />
