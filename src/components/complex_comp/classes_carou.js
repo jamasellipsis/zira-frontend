@@ -2,7 +2,6 @@ import React from 'react';
 import Carousel from 'react-elastic-carousel';
 import './carou.css';
 
-
 /*Classes's info*/
 const classes = [{
     photourl:require('../../assets/other_photos/class1.jpg'),
@@ -51,6 +50,7 @@ class ClassesCarousel extends React.Component {
         { width: 850, itemsToShow: 4, pagination: false  },
         { width: 1750, itemsToShow: 6, pagination: false  },
     ]
+
     }
     render() {
     return (
@@ -70,7 +70,7 @@ class ClassesCarousel extends React.Component {
                         <p className="card-title">{i.description}</p>
                     </div>
                     <div className="card-body my-0 py-0" style={{height:"4%"}}>
-                        <a href="/" class="card-link">Read More</a>
+                        <a href="/" className="card-link">Read More</a>
                     </div>
                     <div className="row" style={{height:"17%", overflow:"hidden"}}>
                         <div className="col-4 my-auto">

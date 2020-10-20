@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom'
-import { Form, Navbar, Nav, Button } from 'react-bootstrap';
+import { Navbar, Nav, Button } from 'react-bootstrap';
 import Login from '../../auth/Login'
 import Register from '../../auth/Register'
 import { Auth } from 'aws-amplify'
@@ -50,8 +50,8 @@ function NavbarNologged(props) {
             {/* In case the authenticated is null */}
             {!props.auth.isAuthenticated && (
                 <>
-                  <Nav.Link className="light-text nav-link m-auto" to='/teach'>Teach</Nav.Link>
-                  <Nav.Link className="light-text nav-link m-auto" to='/learn'>Learn</Nav.Link>
+                  <Link className="light-text nav-link m-auto" to='/teach'>Teach</Link>
+                  <Link className="light-text nav-link m-auto" to='/learn'>Learn</Link>
                   <Login auth={props.auth}/>
                   <Register buttonName='Sign up' />
                 </>
