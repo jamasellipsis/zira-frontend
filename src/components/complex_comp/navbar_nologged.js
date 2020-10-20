@@ -59,18 +59,7 @@ function NavbarNologged(props) {
                   <Register buttonName='Sign up' openModal={openSignUp} setOpenModal={setOpenSignUp}/>
                 </>
               )}
-              {/* In case the authenticated is not null */}
-              {props.auth.isAuthenticated && (
-                <>
-                  <img src={require('../../assets/icons/create.svg')} alt='star' style={{width: '3%', height: '3%', alignSelf: 'center'}} />
-                  <Link className="nav-link light-text" to='/teach'>Create a class</Link>
-                  <img src={require('../../assets/icons/search.svg')} alt='star' style={{width: '3%', height: '3%', alignSelf: 'center'}} />
-                  <Link className="nav-link light-text" to='/learn'>Find classes</Link>
-                  <img src={require('../../assets/icons/calendar.svg')} alt='star' style={{width: '3%', height: '3%', alignSelf: 'center'}} />
-                  <Link className="nav-link light-text" to='/learn'>Schedule</Link>
-                  <Button className="nav-link btn-primary btnSend" onClick={logOut} >Log out</Button>
-                </>
-            )}
+              
             {/* In case the authenticated is not null */}
             {props.auth.isAuthenticated && (
               <>
