@@ -4,7 +4,7 @@ import './footer.css';
 
 const ContactAlert = () => {
     return (
-        <div class="alert alert-info" role="alert">
+        <div className="alert alert-info" role="alert">
             Your message has been sent
         </div>
     )
@@ -29,7 +29,7 @@ const Footer = () => {
                         <Form.Label className="light-text">Message</Form.Label>
                         <Form.Control as="textarea" rows={3} />
                         <br />
-                        <Button variant="primary" type="submit" className="btn btnSend" onClick={<ContactAlert />}>
+                        <Button variant="primary" type="submit" className="btn btnSend" onClick={() => {return <ContactAlert />}}>
                             Send
                         </Button>
                     </Form>
