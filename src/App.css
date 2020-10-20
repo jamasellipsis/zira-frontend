@@ -47,3 +47,44 @@ a {
 .bg-zira{
   background-color: #40b9c1;
 }
+
+/*General Zira Style */
+.bg-zira{
+  background-color: #40b9c1;
+}
+
+.quotation-text{
+font-weight: 300;
+font-style: italic;
+font-size: 1.2rem;
+line-height: 120%;
+}
+
+.light-text {
+color:#f2fafb !important;
+}
+
+/* Zira's Buttons */
+.btnZira {
+background-color:#40b9c1 !important;
+color:#f2fafb !important;
+border:1px solid rgba(0,0,0,0.2) !important;
+box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+font-family: Nunito, Arial, "sans serif";
+}
+/*Auxuliar Button #2 */
+.btnSend {
+  background-color:#f2fafb !important;
+  border:0.5px solid rgba(0,0,0,0.1) !important;
+  color:#40b9c1 !important;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3);
+  font-family: Nunito, Arial, "sans serif";
+}
+/*LogIn Button*/
+.btnSignup{
+background-color:#4F7A7D !important;
+border:none !important;
+color:#f2fafb !important;
+box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3);
+  font-family: Nunito, Arial, "sans serif";
+}

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom'
-import { Form, Navbar, Nav, Button } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom'
+import { Navbar, Nav, Button } from 'react-bootstrap';
 import Login from '../../auth/Login'
 import Register from '../../auth/Register'
 import { Auth } from 'aws-amplify'
@@ -46,7 +46,7 @@ function NavbarNologged(props) {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ml-auto">
+          <Nav className="ml-auto justify-content-end">
             {/* In case the authenticated is null */}
             {!props.auth.isAuthenticated && (
                 <>
