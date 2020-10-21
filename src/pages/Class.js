@@ -9,7 +9,10 @@ import Login from '../auth/Login'
 function Class(props) {
     const [classObj, setClass] = useState(null)
     const [teacher, setTeacher] = useState(null)
-    const [openAlert, setOpenAlert] = useState(false)
+    const [openAlert, setOpenAlert] = useState({
+        open: false,
+        description: ''
+    })
     const [openLogin, setOpenLogin] = useState(false)
 
     useEffect(() => {
@@ -30,29 +33,29 @@ function Class(props) {
     const enroll = e => {
         e.preventDefault()
         if (!props.auth.isAuthenticated) {
-            console.log('por favor registrate')
             setOpenLogin(true)
             return
         }
-        if (props.auth.userData.id !== classObj.teacherId) {
-            ApiUserClass.joinClass({userId: props.auth.userData.id, classId: classObj.id, status: 'current'})
-            .then((res) => {
-                console.log(res)
-                setOpenAlert(true)
-            })
-            .catch((err) => {
-                console.log(err)
-            })
-        }
-        else {
-            console.log('No puedes enrolarte a tu misma clase')
+        else{
+            if (props.auth.userData.id !== classObj.teacherId) {
+                ApiUserClass.joinClass({userId: props.auth.userData.id, classId: classObj.id, status: 'current'})
+                .then(_ => {
+                    setOpenAlert({open: true, description: 'Te has registrado!'})
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+            }
+            else {
+                setOpenAlert({open: true, description:'No puedes registrate a tu misma clase'})
+            }
         }
     }
 
     return classObj && teacher ?
             <div className='d-flex flex-column' >
                 <Login auth={props.auth} openModal={openLogin} setOpenModal={setOpenLogin} />
-                <Alert show={openAlert} setShow={setOpenAlert} btnTitle='close' />
+                <Alert show={openAlert} setShow={setOpenAlert} />
                 <div className='container d-flex justify-content-between' >
                     <div className='d-flex flex-column justify-content-around' >
                         <h1 className='text-left'>{classObj.name}</h1>

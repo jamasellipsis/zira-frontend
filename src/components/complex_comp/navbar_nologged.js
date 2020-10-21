@@ -50,16 +50,15 @@ function NavbarNologged(props) {
           <Nav className="ml-auto justify-content-end">
             {/* In case the authenticated is null */}
             {!props.auth.isAuthenticated && (
-                <>
-                  <Link className="light-text nav-link m-auto" to='/teach'>Teach</Link>
-                  <Link className="light-text nav-link m-auto" to='/learn'>Learn</Link>
-                  <Button className="nav-link btnSend mx-auto my-1" onClick={() => setOpenLogin(true)}>Log in</Button>
-                  <Login auth={props.auth} openModal={openLogin} setOpenModal={setOpenLogin} />
-                  <Button className="nav-link mx-lg-2 mx-auto btnSignup my-1 mt-1" onClick={() => setOpenSignUp(true)}>Sign Up</Button>
-                  <Register buttonName='Sign up' openModal={openSignUp} setOpenModal={setOpenSignUp}/>
-                </>
-              )}
-              
+              <>
+                <Link className="light-text nav-link m-auto" to='/teach'>Teach</Link>
+                <Link className="light-text nav-link m-auto" to='/learn'>Learn</Link>
+                <Button className="nav-link btnSend mx-auto my-1" onClick={() => setOpenLogin(true)}>Log in</Button>
+                <Login auth={props.auth} openModal={openLogin} setOpenModal={setOpenLogin} />
+                <Button className="nav-link mx-lg-2 mx-auto btnSignup my-1 mt-1" onClick={() => setOpenSignUp(true)}>Sign Up</Button>
+                <Register buttonName='Sign up' openModal={openSignUp} setOpenModal={setOpenSignUp}/>
+              </>
+            )}
             {/* In case the authenticated is not null */}
             {props.auth.isAuthenticated && (
               <>

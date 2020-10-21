@@ -2,11 +2,13 @@ import { Modal, Form, Button, InputGroup, FormControl  } from 'react-bootstrap'
 import React, {useState} from 'react';
 import { Auth } from 'aws-amplify'
 import ApiUsers from '../api/Users'
+import InputPhoto from './InputPhoto'
 /* import Alerta from '../components/complex_comp/Alert' */
 
 
 function Register(props) {
     const [error, setError] = useState({cognito: null})
+    const [photo, setPhoto] = useState(null)
 
     const submit = async e => {
         e.preventDefault()
@@ -17,7 +19,29 @@ function Register(props) {
         // AWS cognito
         const { first_name, username, email, password } = userData
 
+        
         try {
+            let formDataa = null
+            if (photo) {
+                formDataa = new FormData();
+                formDataa.append( 
+                    "myFile", 
+                    photo,
+                    photo.name
+                );
+            }
+            const Data = {
+                ...userData,
+                profile_photo: formDataa
+            }
+            ApiUsers.singUpUser(formDataa)
+                .then(response => {
+                    console.log(response)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+            return
             await Auth.signUp({
                 username,
                 password,
@@ -26,17 +50,12 @@ function Register(props) {
                     name: first_name
                 }
             })
-            ApiUsers.singUpUser(userData)
-                .then(response => {
-                    console.log(response)
-                })
-                .catch(err => {
-                    console.log(err)
-                })
+            
+            
             setError({cognito: null})
             props.setOpenModal(false)
         }catch(error){
-            console.log(userData)
+            console.log(photo);
             setError({cognito: error.message})
         }
     }
@@ -79,6 +98,7 @@ function Register(props) {
                     </InputGroup.Prepend>
                     <Form.Control name='password' type="password" placeholder="Password" />
                 </InputGroup>
+                <InputPhoto photo={photo} setPhoto={setPhoto} />
                {/*  <Form.Check name='check' type="checkbox" label="Check me out" className='mt-4 mb-4'/> */}
                 <Button variant="primary" type="submit" className='mt-4 btnZira' > Sign up </Button>
                 </div>
