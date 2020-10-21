@@ -5,7 +5,8 @@ class ApiUsers {
     URL = 'http://zirabackend-env.eba-tpevs9jb.us-east-2.elasticbeanstalk.com/api'
     options = {
         headers: {
-            'Content-type': 'application/json'
+            'Accept': 'application/json',
+            'Content-Type': 'multipart/form-data'
         }
       };
     singUpUser = (userData) => {

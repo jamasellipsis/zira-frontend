@@ -5,6 +5,7 @@ import Teach from './pages/Teach'
 import Learn from './pages/Learn'
 import Dashboard from './pages/Dashboard'
 import Class from './pages/Class'
+import CreateClass from './pages/CreateClass'
 import Navbar from './components/complex_comp/navbar_nologged'
 import Footer from './components/complex_comp/footer'
 import { Auth } from 'aws-amplify'
@@ -37,8 +38,8 @@ class App extends Component {
       await Auth.currentSession()
       this.setAuthStatus(true)
       const user = await Auth.currentAuthenticatedUser()
-      this.setUser(user)
       ApiUsers.getUserByName(user.attributes.name).then((res) => {this.setUserData(res.data[0])})
+      this.setUser(user)
     } catch(error){
       console.log(error)
     }
@@ -66,6 +67,7 @@ class App extends Component {
             <Route path='/learn' exact render={(props) => <Learn {...props} auth={authProps}/>}/>
             <Route path='/dashboard' exact render={(props) => <Dashboard {...props} auth={authProps}/>}/>
             <Route path='/class/:idClass' exact render={(props) => <Class {...props} auth={authProps}/>}/>
+            <Route path='/createclass' exact render={(props) => <CreateClass {...props} auth={authProps}/>}/>
           </Switch>
            <Footer/>
         </div>

@@ -1,8 +1,11 @@
 import React from 'react';
 import Carousel from 'react-elastic-carousel';
 import './carou.css';
-
-/*Teacher's info*/
+/*
+import ApiClasses from '../../api/Classes';
+import ApiUsers from '../../api/Users';
+*/
+/*Teacher's info for testing front-end*/
 const teachers = [{
   photourl:require('../../assets/sample_profile_photos/0.jpg'),
   name:"Miguel A. Chipamocha",
@@ -29,9 +32,15 @@ const teachers = [{
   rol:"Game Developer",
 },];
 
-
-
 class TeachersCarou extends React.Component {
+/*    state = {
+      teachers: []
+    }
+
+    setTeachers = teacher => {
+      this.setState({...this.state, teachers: teacher})
+    }
+*/
     constructor(props) {
       super(props)
       this.breakPoints = [
@@ -42,6 +51,19 @@ class TeachersCarou extends React.Component {
         { width: 1450, itemsToShow: 5, pagination: false  },
         { width: 1750, itemsToShow: 6, pagination: false  },
       ]
+/*
+      const classes = [];
+      ApiClasses.getAll()
+          .then(response => {
+              this.classes.push(response.data)
+          })
+      this.classes.map((aClass) => {
+        ApiUsers.getUserById(aClass.teacherid)
+        .then(response => {
+            this.setTeachers(response.data)
+        }) 
+      })
+*/
     }
     render() {
       return (

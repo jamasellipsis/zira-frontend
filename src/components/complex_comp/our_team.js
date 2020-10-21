@@ -3,7 +3,7 @@ import Carousel from 'react-elastic-carousel';
 import './carou.css';
 
 /* Social networks icons */
-const linkedinIcon = require('../../assets/icons/twitter.png')
+const linkedinIcon = require('../../assets/icons/linkedin.png')
 
 /*Member's info*/
 const members = [{
@@ -64,7 +64,7 @@ class OurTeam extends React.Component{
                             <div className="card-body" style={{height:"50%"}}>
                                 <h4 className="card-title .text-wrap">{i.name}</h4>
                                 <h5 className="card-title">{i.rol}</h5>
-                                <a href={i.linkedinurl} target="_blank" rel="noopener noreferrer" style={{height:"20%"}}> <img src={linkedinIcon} alt="linkedin"></img> </a>
+                                <a href={i.linkedinurl} target="_blank" rel="noopener noreferrer" style={{height:"20%"}}> <img src={linkedinIcon} alt="linkedin" style={{height:"15%"}}></img> </a>
                             </div>
                         </div>
                         </div>  

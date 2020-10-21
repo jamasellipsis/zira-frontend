@@ -21,3 +21,6 @@ Nunito, Arial, "sans serif":
 Adobe MockUp:
 	https://xd.adobe.com/view/141763f0-7471-4f4f-b813-227867a083da-4144/?fullscreen
 
+MVP Specifications:
+https://docs.google.com/document/d/1dchiRv4kAJ8j7-jYoth9Ej8PnZEt7F2Zd8NmSM5xkMQ/edit#heading=h.ibie5uuf6tfv
+

@@ -1,9 +1,10 @@
 import React from 'react';
 import Carousel from 'react-elastic-carousel';
 import './carou.css';
+import ApiClasses from '../../api/Classes';
+import ApiUsers from '../../api/Users';
 
-
-/*Classes's info*/
+/*Classes's info for testing front */
 const classes = [{
     photourl:require('../../assets/other_photos/class1.jpg'),
     title:"Finanzas",
@@ -42,15 +43,39 @@ const classes = [{
 
   /*This component creates the carousel */
 class ClassesCarousel extends React.Component {
+    state = {
+        classes: [],
+    }
+
+    setClasses = clas => {
+        this.setState({...this.state, classes: clas})
+    }
+
     constructor(props) {
-    super(props)
-    this.breakPoints = [
-        { width: 1, itemsToShow: 1, pagination: false  },
-        { width: 400, itemsToShow: 2, pagination: false  },
-        { width: 550, itemsToShow: 3, pagination: false },
-        { width: 850, itemsToShow: 4, pagination: false  },
-        { width: 1750, itemsToShow: 6, pagination: false  },
-    ]
+        super(props)
+        this.breakPoints = [
+            { width: 1, itemsToShow: 1, pagination: false  },
+            { width: 400, itemsToShow: 2, pagination: false  },
+            { width: 550, itemsToShow: 3, pagination: false },
+            { width: 850, itemsToShow: 4, pagination: false  },
+            { width: 1750, itemsToShow: 6, pagination: false  },
+        ]
+
+        ApiClasses.getAll()
+            .then(response => {
+                console.log("this is response data: ", response.data)
+                this.setClasses(response.data)
+            })
+        
+        this.state.classes.map((aClass) => {
+            return (
+                ApiUsers.getUserById(aClass.teacherid)
+                .then(response => {
+                    aClass.teacherPhoto = response.profile_photo;
+                    aClass.teacherName = response.nick_name;
+                })
+            )
+        })
     }
     render() {
     return (
@@ -64,13 +89,13 @@ class ClassesCarousel extends React.Component {
                         <img className="img-fluid rounded w-100" alt="" src={i.photourl}></img>
                     </div>
                     <div className="card-body h-20" style={{height:"13%", overflow:"hidden"}}>
-                        <h5 className="card-title text-bold">{i.title}</h5>
+                        <h5 className="card-title text-bold">{i.name}</h5>
                     </div>
                     <div className="card-body" style={{height:"28%", overflow:"hidden"}}>
                         <p className="card-title">{i.description}</p>
                     </div>
                     <div className="card-body my-0 py-0" style={{height:"4%"}}>
-                        <a href="/" class="card-link">Read More</a>
+                        <a href="/" className="card-link">Read More</a>
                     </div>
                     <div className="row" style={{height:"17%", overflow:"hidden"}}>
                         <div className="col-4 my-auto">

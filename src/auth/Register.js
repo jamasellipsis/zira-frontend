@@ -2,12 +2,18 @@ import { Modal, Form, Button, InputGroup, FormControl  } from 'react-bootstrap'
 import React, {useState} from 'react';
 import { Auth } from 'aws-amplify'
 import ApiUsers from '../api/Users'
+import InputPhoto from './InputPhoto'
+import Alert from '../components/complex_comp/Alert'
 /* import Alerta from '../components/complex_comp/Alert' */
 
 
 function Register(props) {
-    const [openModal, setOpenModal] = useState(props.open)
     const [error, setError] = useState({cognito: null})
+    const [photo, setPhoto] = useState(null)
+    const [openAlert, setOpenAlert] = useState({
+        open: false,
+        description: ''
+    })
 
     const submit = async e => {
         e.preventDefault()
@@ -18,7 +24,21 @@ function Register(props) {
         // AWS cognito
         const { first_name, username, email, password } = userData
 
+        
         try {
+            let data = null
+            if (photo) {
+                data = new FormData();
+                data.append( 
+                    "profile_photo", 
+                    photo,
+                    photo.name
+                );
+                data.append('username', username)
+                data.append('first_name', first_name)
+                data.append('email', email)
+                data.append('password', password)
+            }
             await Auth.signUp({
                 username,
                 password,
@@ -27,17 +47,15 @@ function Register(props) {
                     name: first_name
                 }
             })
-            ApiUsers.singUpUser(userData)
-                .then(response => {
-                    console.log(response)
-                })
-                .catch(err => {
-                    console.log(err)
-                })
+                        
+            ApiUsers.singUpUser(data).then(() => {
+                setOpenAlert({open: true, description: 'Te has registrado con exito, revisa tu correo :D'})
+            })
+
             setError({cognito: null})
-            setOpenModal(false)
+            props.setOpenModal(false)
         }catch(error){
-            console.log(userData)
+            console.log(error);
             setError({cognito: error.message})
         }
     }
@@ -45,8 +63,8 @@ function Register(props) {
     return (
         <>
         <div >
-            <Button className="nav-link mx-lg-2 mx-auto btnSignup mt-1" onClick={() => setOpenModal(true)}>{props.buttonName}</Button>
-            <Modal show={openModal} onHide={() => setOpenModal(false)}>
+            <Modal show={props.openModal} onHide={() => props.setOpenModal(false)}>
+            <Alert show={openAlert} setShow={setOpenAlert} />
             <Form className='p-5' onSubmit={submit}>
                 <div className='text-center' >
                 <img src= {require('../assets/name_and_logo/GreenLogo.png')} className='mb-5' alt='Zira-logo' />
@@ -81,6 +99,7 @@ function Register(props) {
                     </InputGroup.Prepend>
                     <Form.Control name='password' type="password" placeholder="Password" />
                 </InputGroup>
+                <InputPhoto photo={photo} setPhoto={setPhoto} />
                {/*  <Form.Check name='check' type="checkbox" label="Check me out" className='mt-4 mb-4'/> */}
                 <Button variant="primary" type="submit" className='mt-4 btnZira' > Sign up </Button>
                 </div>

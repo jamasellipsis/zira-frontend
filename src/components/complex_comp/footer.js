@@ -2,13 +2,7 @@ import React from 'react';
 import { Button, Form, Navbar } from 'react-bootstrap';
 import './footer.css';
 
-const ContactAlert = () => {
-    return (
-        <div class="alert alert-info" role="alert">
-            Your message has been sent
-        </div>
-    )
-}
+
 const Footer = () => {
     return (
         <div className="container-fluid" style={{backgroundColor:"#40b9c1"}}>
@@ -29,7 +23,7 @@ const Footer = () => {
                         <Form.Label className="light-text">Message</Form.Label>
                         <Form.Control as="textarea" rows={3} />
                         <br />
-                        <Button variant="primary" type="submit" className="btn btnSend" onClick={<ContactAlert />}>
+                        <Button variant="primary" type="submit" className="btn btnSend">
                             Send
                         </Button>
                     </Form>

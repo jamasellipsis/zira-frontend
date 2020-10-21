@@ -6,8 +6,8 @@ const Testimonial = () => {
         <div className="container-fluid py-3" style={{backgroundColor:"#94D0D3"}}>
             <div className="row py-3 mx-5">
                     <ProfilePhoto photo={require('../../assets/sample_profile_photos/31.jpg')}/>
-                    <p className="quotation-text mt-3">“It's wonderful to have access to such a wide range of interesting subjects taught by enthusiastic teachers in the comfort of our own home. My kids also enjoy being able to interact through video conferencing not just with the teachers, but with fellow class mates.”
-- Jennifer D., Augusta, GA</p>                    
+                    <p className="quotation-text mt-3">“It's wonderful to have access to such a wide range of interesting subjects taught by enthusiastic teachers in the comfort of our own home. I meet new people every class, create new valuable contacts and enjoy interactive classes.”
+- Maria C, Garcia, ME</p>                    
             </div>
         </div>
     );
