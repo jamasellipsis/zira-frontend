@@ -1,17 +1,15 @@
-import React, {useState} from 'react'
-import { Modal, Form, Button, InputGroup, FormControl } from 'react-bootstrap' 
+import React from 'react'
+import { Modal, Form, Button} from 'react-bootstrap' 
 
 function Alerta(props) {
-    const [show, setShow] = useState(true);
-  
 
     return (
-        <Modal show={props.show} 
-          onHide={() => props.setShow(false)} >
+        <Modal show={props.show.open} 
+          onHide={() => props.setShow({open: false})} className='w-100'>
           <Form className='p-5' >
-            <div className='text-center' >
-              
-              <Button variant="primary" className='mt-4 btnZira'> {props.btnTitle} </Button>
+            <div className='text-center'>
+              <h2>{props.show.description}</h2>
+              {props.btn && <Button variant="primary" className='mt-4 btnZira w-100' onClick={() => props.setShow(false)} > {props.btnTitle} </Button>}
             </div>
           </Form>
         </Modal>

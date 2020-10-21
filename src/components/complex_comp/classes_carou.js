@@ -3,42 +3,6 @@ import Carousel from 'react-elastic-carousel';
 import './carou.css';
 import ApiClasses from '../../api/Classes'
 
-/*Classes's info*/
-const classes = [{
-    photourl:require('../../assets/other_photos/class1.jpg'),
-    title:"Finanzas",
-    description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dui orci, congue a enim non, ultricies porttitor erat. Mauris vel ornare diam. Sed vel maximus enim. Morbi aliquam non mauris vel imperdiet. Ut blandit massa eget ultrices aliquam. Donec ut nulla nec metus facilisis congue. Aenean vitae viverra lorem. Nam congue lobortis molestie. Phasellus vitae vulputate orci. Vestibulum eu eros leo. Nullam pulvinar elit est, eget aliquet neque dapibus eu. Nam vestibulum sodales mi quis gravida. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed lobortis arcu mollis ullamcorper dictum.Lore",
-    teacher_photo:require('../../assets/sample_profile_photos/0.jpg'),
-    teache_name:"Francisco Perez"
-  },
-  {
-    photourl:require('../../assets/other_photos/class2.jpg'),
-    title:"Diseño",
-    description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dui orci, congue a enim non, ultricies porttitor erat. Mauris vel ornare diam. Sed vel maximus enim. Morbi aliquam non mauris vel imperdiet. Ut blandit massa eget ultrices aliquam. Donec ut nulla nec metus facilisis congue. Aenean vitae viverra lorem. Nam congue lobortis molestie. Phasellus vitae vulputate orci. Vestibulum eu eros leo. Nullam pulvinar elit est, eget aliquet neque dapibus eu. Nam vestibulum sodales mi quis gravida. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed lobortis arcu mollis ullamcorper dictum.Full-stack Developer",
-    teacher_photo:require('../../assets/sample_profile_photos/33.jpg'),
-    teache_name:"Francisco Perez"
-  },
-  {
-    photourl:require('../../assets/other_photos/class1.jpg'),
-    title:"Anderson Castiblanco lldldldldldldldldld",
-    description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dui orci, congue a enim non, ultricies porttitor erat. Mauris vel ornare diam. Sed vel maximus enim. Morbi aliquam non mauris vel imperdiet. Ut blandit massa eget ultrices aliquam. Donec ut nulla nec metus facilisis congue. Aenean vitae viverra lorem. Nam congue lobortis molestie. Phasellus vitae vulputate orci. Vestibulum eu eros leo. Nullam pulvinar elit est, eget aliquet neque dapibus eu. Nam vestibulum sodales mi quis gravida. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed lobortis arcu mollis ullamcorper dictum.Front-End Developer",
-    teacher_photo:require('../../assets/sample_profile_photos/31.jpg'),
-    teache_name:"Francisco Perez"
-  },
-  {
-    photourl:require('../../assets/other_photos/class2.jpg'),
-    title:"Santiago Gallego",
-    description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dui orci, congue a enim non, ultricies porttitor erat. Mauris vel ornare diam. Sed vel maximus enim. Morbi aliquam non mauris vel imperdiet. Ut blandit massa eget ultrices aliquam. Donec ut nulla nec metus facilisis congue. Aenean vitae viverra lorem. Nam congue lobortis molestie. Phasellus vitae vulputate orci. Vestibulum eu eros leo. Nullam pulvinar elit est, eget aliquet neque dapibus eu. Nam vestibulum sodales mi quis gravida. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed lobortis arcu mollis ullamcorper dictum.Back-End Developer",
-    teacher_photo:require('../../assets/sample_profile_photos/2.jpg'),
-    teache_name:"Francisco Perez"
-  },
-  {
-    photourl:require('../../assets/other_photos/class1.jpg'),
-    title:"Juan D. Suarez",
-    description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dui orci, congue a enim non, ultricies porttitor erat. Mauris vel ornare diam. Sed vel maximus enim. Morbi aliquam non mauris vel imperdiet. Ut blandit massa eget ultrices aliquam. Donec ut nulla nec metus facilisis congue. Aenean vitae viverra lorem. Nam congue lobortis molestie. Phasellus vitae vulputate orci. Vestibulum eu eros leo. Nullam pulvinar elit est, eget aliquet neque dapibus eu. Nam vestibulum sodales mi quis gravida. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed lobortis arcu mollis ullamcorper dictum.Game Developer",
-    teacher_photo:require('../../assets/sample_profile_photos/32.jpg'),
-    teache_name:"Francisco Perez"
-  },];
 
   /*This component creates the carousel */
 class ClassesCarousel extends React.Component {
