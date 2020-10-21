@@ -3,12 +3,17 @@ import React, {useState} from 'react';
 import { Auth } from 'aws-amplify'
 import ApiUsers from '../api/Users'
 import InputPhoto from './InputPhoto'
+import Alert from '../components/complex_comp/Alert'
 /* import Alerta from '../components/complex_comp/Alert' */
 
 
 function Register(props) {
     const [error, setError] = useState({cognito: null})
     const [photo, setPhoto] = useState(null)
+    const [openAlert, setOpenAlert] = useState({
+        open: false,
+        description: ''
+    })
 
     const submit = async e => {
         e.preventDefault()
@@ -21,27 +26,19 @@ function Register(props) {
 
         
         try {
-            let formDataa = null
+            let data = null
             if (photo) {
-                formDataa = new FormData();
-                formDataa.append( 
-                    "myFile", 
+                data = new FormData();
+                data.append( 
+                    "profile_photo", 
                     photo,
                     photo.name
                 );
+                data.append('username', username)
+                data.append('first_name', first_name)
+                data.append('email', email)
+                data.append('password', password)
             }
-            const Data = {
-                ...userData,
-                profile_photo: formDataa
-            }
-            ApiUsers.singUpUser(formDataa)
-                .then(response => {
-                    console.log(response)
-                })
-                .catch(err => {
-                    console.log(err)
-                })
-            return
             await Auth.signUp({
                 username,
                 password,
@@ -50,12 +47,15 @@ function Register(props) {
                     name: first_name
                 }
             })
-            
-            
+                        
+            ApiUsers.singUpUser(data).then(() => {
+                setOpenAlert({open: true, description: 'Te has registrado con exito, revisa tu correo :D'})
+            })
+
             setError({cognito: null})
             props.setOpenModal(false)
         }catch(error){
-            console.log(photo);
+            console.log(error);
             setError({cognito: error.message})
         }
     }
@@ -64,6 +64,7 @@ function Register(props) {
         <>
         <div >
             <Modal show={props.openModal} onHide={() => props.setOpenModal(false)}>
+            <Alert show={openAlert} setShow={setOpenAlert} />
             <Form className='p-5' onSubmit={submit}>
                 <div className='text-center' >
                 <img src= {require('../assets/name_and_logo/GreenLogo.png')} className='mb-5' alt='Zira-logo' />

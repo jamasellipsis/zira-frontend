@@ -9,6 +9,10 @@ class ApiClasses {
         }
       };
     
+    createClass = (data) => {
+        return axios.post(this.URL + '/classes', data, this.options)
+    }
+
     getAll = () => {
         return axios.get(this.URL + '/classes')
     }

@@ -38,8 +38,8 @@ class App extends Component {
       await Auth.currentSession()
       this.setAuthStatus(true)
       const user = await Auth.currentAuthenticatedUser()
-      this.setUser(user)
       ApiUsers.getUserByName(user.attributes.name).then((res) => {this.setUserData(res.data[0])})
+      this.setUser(user)
     } catch(error){
       console.log(error)
     }

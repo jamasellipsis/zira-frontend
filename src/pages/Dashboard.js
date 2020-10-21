@@ -7,10 +7,14 @@ import './Dashboard.css'
 function Dashboard(props) {
   const history = useHistory()
   const [classes, setClasses] = useState(null)
+  const [user, setUser] = useState()
 
   useEffect(() => {
-    if (!classes && props.auth.userData) {
-      ApiUsers.getClasses(props.auth.userData.id)
+    if (!user) {
+      ApiUsers.getUserByName(props.auth.user.username).then((res) => {setUser(res.data[0])})
+    }
+    if (!classes && user) {
+      ApiUsers.getClasses(user.id)
         .then(response => {
           setClasses(response.data)
         })
