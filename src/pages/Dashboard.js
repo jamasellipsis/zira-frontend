@@ -16,24 +16,28 @@ function Dashboard(props) {
         })
     }
   })
-
+  console.log("these are the classes---->", classes);
   return (
     <div>
       {!props.auth.isAuthenticated ? history.push('/') : 
       <div className='d-flex classDashboard' >
-          <div className='d-flex flex-column col-lg-3 col-md-12 border-right border-secondary p-0'> 
-            <div className='d-flex flex-column overflow-auto mt-3 pb-3 text-left border-bottom border-secondary pl-3' style={{height: '33%'}}>
-              <h5> Past classes </h5>
-              {!classes ? <p></p> :
+          <div className='container col-lg-3 col-12 border-right border-secondary p-0'> 
+            <div className='d-flex flex-column overflow-auto mt-3 pb-3 text-left border-bottom border-secondary pl-3' style={{maxHeight: '33%'}}>
+              <div className="row p-2 mb-2" style={{backgroundColor:"#40b9c1", width:"100%"}}>
+                <h4 className="light-text"> Past classes </h4>
+              </div>              
+              {!classes ? <p>No past classes</p> :
                 classes.map(clas => {
                   return clas.user_classes[0].status === 'past' ?
                     (<p>{clas.name}</p>)
                   : <></>
                 })}
             </div>
-            <div className='d-flex flex-column overflow-auto mt-3 pb-3 text-left border-bottom border-secondary pl-3' style={{height: '33%'}}>
-              <h5> Current classes </h5>
-              {!classes ? <p></p> :
+            <div className='d-flex flex-column overflow-auto mt-3 pb-3 text-left border-bottom border-secondary pl-3' style={{maxHeight: '33%'}}>
+              <div className="row p-2 mb-2" style={{backgroundColor:"#40b9c1", width:"100%"}}>
+                <h4 className="light-text"> Current classes </h4>
+              </div>
+              {!classes ? <p>No current classes</p> :
                 classes.map(clas => {
                   return clas.user_classes[0].status === 'current' ?
                     (<p>{clas.name}</p>)

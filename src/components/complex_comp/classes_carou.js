@@ -4,7 +4,7 @@ import './carou.css';
 import ApiClasses from '../../api/Classes';
 import ApiUsers from '../../api/Users';
 
-/*Classes's info for testing front
+/*Classes's info for testing front */
 const classes = [{
     photourl:require('../../assets/other_photos/class1.jpg'),
     title:"Finanzas",
@@ -40,7 +40,7 @@ const classes = [{
     teacher_photo:require('../../assets/sample_profile_photos/32.jpg'),
     teache_name:"Francisco Perez"
   },];
-*/
+
   /*This component creates the carousel */
 class ClassesCarousel extends React.Component {
     state = {
@@ -81,7 +81,7 @@ class ClassesCarousel extends React.Component {
     return (
         <Carousel breakPoints={this.breakPoints} enableAutoPlay autoPlaySpeed={3000}>
         {/*Individual cards: */}
-        {this.state.classes.map((i) => {
+        {classes.map((i) => {
             return(
             <div className="col mx-auto mb-5" style={{height:"500px", overflow:"hidden"}}>
                 <div className="card rounded w-100 shadow" style={{height:"100%", overflow:"hidden"}}>

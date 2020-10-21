@@ -4,17 +4,17 @@ import React from 'react';
 const characs = [{
     photourl:require('../../assets/sample_profile_photos/interaction.jpg'),
     title:"Interactivity",
-    description:"Zira allows video and voice interactions between participants inside the virtual rooms, almost like in the real world"
+    description:"Zira allows video and voice interactions between participants inside the virtual rooms, almost like in a real classroom"
 },
 {
     photourl:require('../../assets/sample_profile_photos/interaction.jpg'),
     title:"Networking",
-    description:"Zira allows video and voice interactions between participants inside the virtual rooms, almost like in the real world"
+    description:"You can get in the classes before it begins, and can stay after it finishes, the perfect time for getting new contacts and friends"
 },
 {
     photourl:require('../../assets/sample_profile_photos/interaction.jpg'),
-    title:"Fun",
-    description:"Zira allows video and voice interactions between participants inside the virtual rooms, almost like in the real world"
+    title:"From Everywhere",
+    description:"You can teach and learn from everywhere around the world"
 }];
 
 class ZiraCharacs extends React.Component{

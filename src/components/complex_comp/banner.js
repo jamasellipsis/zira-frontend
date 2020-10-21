@@ -8,7 +8,7 @@ const Banner = (props) => {
     return (
         <div>
             <div className="jumbotron jumbotron-image mb-0 jumbotronImg">
-                <h2 className="mb-4 light-text text-left ml-5">
+                <h2 className="mb-4 light-text text-left ml-2">
                     Interactive Live Classes
                 </h2>
                 <Button className="nav-link mx-lg-2 mx-auto btnSignup ml-5 mt-1" onClick={() => setOpenSignUp(true)}>Join for free</Button>
