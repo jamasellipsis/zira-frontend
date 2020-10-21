@@ -40,6 +40,9 @@ function Class(props) {
             if (props.auth.userData.id !== classObj.teacherId) {
                 ApiUserClass.joinClass({userId: props.auth.userData.id, classId: classObj.id, status: 'current'})
                 .then(_ => {
+                    setTimeout(function() {
+                        setOpenAlert({open: false, description: 'Te has registrado!'})
+                      }, 2000);
                     setOpenAlert({open: true, description: 'Te has registrado!'})
                 })
                 .catch((err) => {

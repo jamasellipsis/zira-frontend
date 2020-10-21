@@ -5,11 +5,11 @@ function InputPhoto(props) {
       props.setPhoto(event.target.files[0]);
     }
     return ( 
-        <div> 
-            <div> 
-                <input type="file" onChange={onFileChange} />
-            </div> 
-            {/* {this.fileData()}  */}
+        <div>
+            <div className="custom-file">
+                <input type="file" className="custom-file-input" id="customFile" onChange={onFileChange}/>
+                <label className="custom-file-label" for="customFile">Choose file</label>
+            </div>
         </div> 
     ); 
   } 
