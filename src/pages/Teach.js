@@ -2,11 +2,12 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import ProfilePhoto from '../components/simple_comp/profile_photo';
 
+const bannerPhoto = require('../assets/other_photos/banner.svg')
 const Teach = (props) => {
   return (
     <div>
       {/*Jumbotron */}
-      <div className="jumbotron jumbotron-image mb-0" style={{backgroundImage:"url(https://images.unsplash.com/photo-1552152974-19b9caf99137?fit=crop&w=1350&q=80)"}}>
+      <div className="jumbotron jumbotron-image mb-0 jumbotronImg">
           <h2 className="mb-4 light-text text-center">
               Share your knowledge with the world
           </h2>
@@ -22,8 +23,8 @@ const Teach = (props) => {
       <div className="container-fluid py-3" style={{backgroundColor:"#94D0D3"}}>
         <div className="row py-3 mx-5">
             <ProfilePhoto photo={require('../assets/sample_profile_photos/31.jpg')}/>
-            <p className="quotation-text mt-3">“It's wonderful to have access to such a wide range of interesting subjects taught by enthusiastic teachers in the comfort of our own home. My kids also enjoy being able to interact through video conferencing not just with the teachers, but with fellow class mates.”
-- Jennifer D., Augusta, GA</p>                    
+            <p className="quotation-text mt-3">“I love teaching Design, but the platforms I knew doesn't allow me to create an interactive class, I miss real spaces. Zira allows me to offer a great experience for my students, I earn extra money and I can have students from many places around the world.”
+- Erika M., Diaz, BO</p>                    
         </div>
       </div>
     </div>
