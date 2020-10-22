@@ -30,7 +30,7 @@ function CreateClass(props) {
                 setTimeout(function() {
                     history.push('/dashboard')
                   }, 2000);
-                  setOpenAlert({open: true, description: 'Has creado con exito una clase'})
+                  setOpenAlert({open: true, description: 'Your class was created successfully'})
             })
             .catch(err=>{
                 console.log(err)

@@ -4,7 +4,7 @@ import './carou.css';
 import ApiClasses from '../../api/Classes';
 import ApiUsers from '../../api/Users';
 
-/*Classes's info for testing front */
+/*Classes's info for testing front
 const classes = [{
     photourl:require('../../assets/other_photos/class1.jpg'),
     title:"Finanzas",
@@ -40,7 +40,7 @@ const classes = [{
     teacher_photo:require('../../assets/sample_profile_photos/32.jpg'),
     teache_name:"Francisco Perez"
   },];
-
+*/
   /*This component creates the carousel */
 class ClassesCarousel extends React.Component {
     state = {
@@ -63,25 +63,25 @@ class ClassesCarousel extends React.Component {
 
         ApiClasses.getAll()
             .then(response => {
-                console.log("this is response data: ", response.data)
                 this.setClasses(response.data)
-            })
-        
-        this.state.classes.map((aClass) => {
-            return (
-                ApiUsers.getUserById(aClass.teacherid)
-                .then(response => {
-                    aClass.teacherPhoto = response.profile_photo;
-                    aClass.teacherName = response.nick_name;
+                console.log("classes---->", this.state.classes)
+                this.state.classes.map((aClass) => {
+                    return (
+                        ApiUsers.getUserById(aClass.teacherId)
+                        .then(response => {
+                            aClass.teacherPhoto = response.data[0].profile_photo;
+                            aClass.teacherName = response.data[0].username;
+                        })
+                    )
                 })
-            )
-        })
+            })
     }
     render() {
     return (
         <Carousel breakPoints={this.breakPoints} enableAutoPlay autoPlaySpeed={3000}>
         {/*Individual cards: */}
-        {classes.map((i) => {
+        {this.state.classes.map((i) => {
+            console.log("this is i->>>>", i, "teacher", i.teacherName);
             return(
             <div className="col mx-auto mb-5" style={{height:"500px", overflow:"hidden"}}>
                 <div className="card rounded w-100 shadow" style={{height:"100%", overflow:"hidden"}}>
@@ -98,12 +98,13 @@ class ClassesCarousel extends React.Component {
                         <a href="/" className="card-link">Read More</a>
                     </div>
                     <div className="row" style={{height:"17%", overflow:"hidden"}}>
-                        <div className="col-4 my-auto">
-                            <a href="/"><img src={i.teacher_photo} className="rounded-circle img-thumbnail my-auto ml-4" alt="teacher"></img></a>
-                        </div>
                         <div className="col-6 m-auto">
-                            <h6 className="card-title text-bold my-auto text-left">{i.teache_name}</h6>
+                            <h6 className="card-title text-bold my-auto text-left">{i.teacherName}</h6>
                         </div>
+                        <div className="col-4 my-auto">
+                            <a href="/"><img src={i.teacherPhoto} className="rounded-circle img-thumbnail my-auto ml-4" alt="teacher"></img></a>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
