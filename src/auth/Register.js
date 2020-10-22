@@ -4,7 +4,7 @@ import { Auth } from 'aws-amplify'
 import ApiUsers from '../api/Users'
 import InputPhoto from './InputPhoto'
 import Alert from '../components/complex_comp/Alert'
-/* import Alerta from '../components/complex_comp/Alert' */
+import DatePicker from "react-datepicker";
 
 
 function Register(props) {
@@ -14,15 +14,16 @@ function Register(props) {
         open: false,
         description: ''
     })
+    const [userData, setUserData] = useState({birth_date: new Date()})
 
     const submit = async e => {
         e.preventDefault()
         // Get info from form and store it inside userData 
-        const formData = new FormData(e.target),
-            userData = Object.fromEntries(formData.entries())
+        const formData = new FormData(e.target)
+            setUserData({...userData, ...Object.fromEntries(formData.entries())})
 
         // AWS cognito
-        const { first_name, username, email, password } = userData
+        const { first_name, username, email, password, last_name, birth_date } = userData
 
         
         try {
@@ -36,8 +37,16 @@ function Register(props) {
                 );
                 data.append('username', username)
                 data.append('first_name', first_name)
+                data.append('last_name', last_name)
                 data.append('email', email)
                 data.append('password', password)
+                data.append('status', 'Active')
+                data.append('birth_date', birth_date)
+                console.log(data)
+            }
+            else { 
+                setError({cognito: 'Pls set a profile photo'})
+                return
             }
             await Auth.signUp({
                 username,
@@ -52,8 +61,11 @@ function Register(props) {
                 setOpenAlert({open: true, description: 'Te has registrado con exito, revisa tu correo :D'})
             })
 
+            setTimeout(() => {
+                props.setOpenModal(false)
+            }, 2000)
+
             setError({cognito: null})
-            props.setOpenModal(false)
         }catch(error){
             console.log(error);
             setError({cognito: error.message})
@@ -85,7 +97,13 @@ function Register(props) {
                     <InputGroup.Prepend>
                     <InputGroup.Text id="basic-addon1" className='gray'><img src={require('../assets/icons/name.png')} width='20px' alt='name' /></InputGroup.Text>
                     </InputGroup.Prepend>
-                    <FormControl name='first_name' placeholder="Name"/>
+                    <FormControl name='first_name' placeholder="First name"/>
+                </InputGroup>
+                <InputGroup className="mb-3">
+                    <InputGroup.Prepend>
+                    <InputGroup.Text id="basic-addon1" className='gray'><img src={require('../assets/icons/name.png')} width='20px' alt='name' /></InputGroup.Text>
+                    </InputGroup.Prepend>
+                    <FormControl name='last_name' placeholder="Last name"/>
                 </InputGroup>
                 <InputGroup className="mb-3">
                     <InputGroup.Prepend>
@@ -98,6 +116,10 @@ function Register(props) {
                     <InputGroup.Text id="basic-addon1" className='gray'><img src={require('../assets/icons/password.png')} width='20px' alt='password' /></InputGroup.Text>
                     </InputGroup.Prepend>
                     <Form.Control name='password' type="password" placeholder="Password" />
+                </InputGroup>
+                <InputGroup>
+                    <label htmlFor="birth_date">Birth date</label>
+                    <DatePicker id="birth_date" selected={userData.birth_date} onChange={date => setUserData({...userData, birth_date: date}  )} className='m-3'/>
                 </InputGroup>
                 <InputPhoto photo={photo} setPhoto={setPhoto} />
                {/*  <Form.Check name='check' type="checkbox" label="Check me out" className='mt-4 mb-4'/> */}
