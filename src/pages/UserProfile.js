@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import ApiUsers from '../api/Users'
 import './UserProfile.css'
+import { useHistory } from 'react-router-dom'
 
 
 function UserProfile(props) {
@@ -8,6 +9,8 @@ function UserProfile(props) {
         open: false,
         description: ''
     }) */
+
+    const history = useHistory()
 
     useEffect(() => {
         if (typeof props.auth.userData === 'undefined') {
@@ -17,7 +20,7 @@ function UserProfile(props) {
     })
 
 
-    return (
+    return props.auth.isAuthenticated ?
         <div className='Body'>
             {props.auth.userData &&
             <div className="container">
@@ -83,7 +86,7 @@ function UserProfile(props) {
             </div>
             }
         </div>
-    )
+        : <>{history.push('/')}</>
 }
 
 export default UserProfile;

@@ -1,17 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import ProfilePhoto from '../components/simple_comp/profile_photo';
+import Login from '../auth/Login'
+import { useHistory } from 'react-router-dom'
 /* 
 const bannerPhoto = require('../assets/other_photos/banner.svg') */
 const Teach = (props) => {
+  const [openLogin, setOpenLogin] = useState(false)
+  const history = useHistory()
+  function createClass () {
+    if (!props.auth.isAuthenticated) {
+      setOpenLogin(true)
+      return
+    } else {
+      history.push('/CreateClass')
+    }
+  }
+
   return (
     <div>
       {/*Jumbotron */}
+      <Login auth={props.auth} openModal={openLogin} setOpenModal={setOpenLogin} />
       <div className="jumbotron jumbotron-image mb-0 jumbotronImg">
           <h2 className="mb-4 light-text text-center">
               Share your knowledge with the world
           </h2>
-          <Button className="mx-auto btnSignup mt-1" href="/CreateClass">Create a Class</Button>
+          <Button className="mx-auto btnSignup mt-1" onClick={createClass}>Create a Class</Button>
       </div>
       {/* Info section */}
       <div className="card-body">
