@@ -25,7 +25,7 @@ class ZiraCharacs extends React.Component{
                 <div className="row mt-4">
                     {characs.map((i) => {
                         return(
-                            <div className="col-sm-4">
+                            <div className="col-sm-4" key={i.title}>
                                 <div className="card border-0">
                                     <img className="img-fluid rounded-circle w-50 mx-auto" alt="" src={i.photourl}></img>
                                     <div className="card-body">

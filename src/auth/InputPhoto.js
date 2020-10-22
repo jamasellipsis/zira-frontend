@@ -7,9 +7,9 @@ function InputPhoto(props) {
     return (
         <div className="custom-file">
             <input type="file" className="custom-file-input" id="customFile" onChange={onFileChange}/>
-            <label className="custom-file-label" for="customFile">Choose photo</label>
+            <label className="custom-file-label" for="customFile">Profile Photo</label>
         </div>
     ); 
   } 
   
-  export default InputPhoto; 
+  export default InputPhoto;

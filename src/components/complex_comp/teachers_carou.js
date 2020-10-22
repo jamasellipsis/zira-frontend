@@ -71,7 +71,7 @@ class TeachersCarou extends React.Component {
           {/*Individual cards: */}
           {teachers.map((i) => {
               return(
-              <div className="col mx-auto">
+              <div className="col mx-auto" key={i.name}>
                 <div className="card border-0">
                 <img className="img-fluid rounded-circle w-90 mx-auto" alt="" src={i.photourl}></img>
                 <div className="card-body">

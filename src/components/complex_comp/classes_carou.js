@@ -64,11 +64,12 @@ class ClassesCarousel extends React.Component {
         ApiClasses.getAll()
             .then(response => {
                 this.setClasses(response.data)
-                console.log("classes---->", this.state.classes)
+                console.log("classes1---->", this.state.classes)
                 this.state.classes.map((aClass) => {
                     return (
                         ApiUsers.getUserById(aClass.teacherId)
                         .then(response => {
+                            console.log("this is the teacher name-->", response.data[0].username)
                             aClass.teacherPhoto = response.data[0].profile_photo;
                             aClass.teacherName = response.data[0].username;
                         })
@@ -83,7 +84,7 @@ class ClassesCarousel extends React.Component {
         {this.state.classes.map((i) => {
             console.log("this is i->>>>", i, "teacher", i.teacherName);
             return(
-            <div className="col mx-auto mb-5" style={{height:"500px", overflow:"hidden"}}>
+            <div className="col mx-auto mb-5" style={{height:"500px", overflow:"hidden"}} key={i.id}>
                 <div className="card rounded w-100 shadow" style={{height:"100%", overflow:"hidden"}}>
                     <div className="row mw-100 mx-auto" style={{height:"35%", overflow:"hidden"}}>
                         <img className="img-fluid rounded w-100" alt="" src={i.photourl}></img>
@@ -98,13 +99,12 @@ class ClassesCarousel extends React.Component {
                         <a href="/" className="card-link">Read More</a>
                     </div>
                     <div className="row" style={{height:"17%", overflow:"hidden"}}>
-                        <div className="col-6 m-auto">
-                            <h6 className="card-title text-bold my-auto text-left">{i.teacherName}</h6>
-                        </div>
                         <div className="col-4 my-auto">
                             <a href="/"><img src={i.teacherPhoto} className="rounded-circle img-thumbnail my-auto ml-4" alt="teacher"></img></a>
                         </div>
-                        
+                        <div className="col-6 m-auto">
+                            <h6 className="card-title text-bold my-auto text-left">{i.teacherName}</h6>
+                        </div>                        
                     </div>
                 </div>
             </div>
