@@ -20,6 +20,7 @@ function NavbarNologged(props) {
       props.auth.setAuthStatus(false)
       props.auth.setUser(null)
       props.auth.setUserData(null)
+      setOpenLogin(false)
     } catch(error) {
       console.log(error)
     }
