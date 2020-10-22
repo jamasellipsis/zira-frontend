@@ -1,8 +1,8 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import ProfilePhoto from '../components/simple_comp/profile_photo';
-
-const bannerPhoto = require('../assets/other_photos/banner.svg')
+/* 
+const bannerPhoto = require('../assets/other_photos/banner.svg') */
 const Teach = (props) => {
   return (
     <div>

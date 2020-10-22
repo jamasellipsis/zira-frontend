@@ -6,6 +6,7 @@ import Learn from './pages/Learn'
 import Dashboard from './pages/Dashboard'
 import Class from './pages/Class'
 import CreateClass from './pages/CreateClass'
+import UserProfile from './pages/UserProfile'
 import Navbar from './components/complex_comp/navbar_nologged'
 import Footer from './components/complex_comp/footer'
 import { Auth } from 'aws-amplify'
@@ -68,6 +69,7 @@ class App extends Component {
             <Route path='/dashboard' exact render={(props) => <Dashboard {...props} auth={authProps}/>}/>
             <Route path='/class/:idClass' exact render={(props) => <Class {...props} auth={authProps}/>}/>
             <Route path='/createclass' exact render={(props) => <CreateClass {...props} auth={authProps}/>}/>
+            <Route path='/profile' exact render={(props) => <UserProfile {...props} auth={authProps}/>}/>
           </Switch>
            <Footer/>
         </div>

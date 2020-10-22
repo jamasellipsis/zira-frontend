@@ -5,6 +5,7 @@ import ApiClasses from '../api/Classes'
 import ApiUsers from '../api/Users'
 import Alert from '../components/complex_comp/Alert'
 import "react-datepicker/dist/react-datepicker.css";
+import InputPhoto from '../auth/InputPhoto'
 
 
 function CreateClass(props) {
@@ -16,16 +17,35 @@ function CreateClass(props) {
         date_start: new Date(),
         date_end: new Date(),
         status: 'Active',
-        teacherId: null
+        teacherId: null,
+        class_photo: null
     })
     const [openAlert, setOpenAlert] = useState({
         open: false,
         description: ''
     })
+    function setPhoto(photo) {
+        setData({...Data, class_photo: photo})
+    }
 
 
     function submit () {
-        ApiClasses.createClass(Data)
+
+        if (Data.class_photo) {
+            const data = new FormData();
+            data.append( 
+                "class_photo", 
+                Data.class_photo,
+                Data.class_photo.name
+            );
+            data.append('description', Data.description)
+            data.append('name', Data.name)
+            data.append('cost', Data.cost)
+            data.append('date_start', Data.date_start)
+            data.append('date_end', Data.date_end)
+            data.append('status', Data.status)
+            data.append('teacherId', Data.teacherId)
+            ApiClasses.createClass(data)
             .then(response => {
                 setTimeout(function() {
                     history.push('/dashboard')
@@ -35,6 +55,13 @@ function CreateClass(props) {
             .catch(err=>{
                 console.log(err)
             })
+        }
+        else { 
+            setOpenAlert({open: true, description: 'set a class photo'})
+            return
+        }
+
+        
     }
 
     useEffect(() => {
@@ -64,6 +91,9 @@ function CreateClass(props) {
                     <DatePicker id="date_start" selected={Data.date_start} onChange={date => setData({...Data, date_start: date})} className='m-3'/>
                     <label htmlFor="date_end">End date</label>
                     <DatePicker id="date_end" selected={Data.date_end} onChange={date => setData({...Data, date_end: date}  )} className='m-3'/>
+                </div>
+                <div className='form-group'>
+                    <InputPhoto setPhoto={setPhoto} />
                 </div>
                 <div>
                     <button onClick={submit}>Submit</button>
