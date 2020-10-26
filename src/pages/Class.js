@@ -41,16 +41,16 @@ function Class(props) {
                 ApiUserClass.joinClass({userId: props.auth.userData.id, classId: classObj.id, status: 'current'})
                 .then(_ => {
                     setTimeout(function() {
-                        setOpenAlert({open: false, description: 'Te has registrado!'})
+                        setOpenAlert({open: false, description: ''})
                       }, 2000);
-                    setOpenAlert({open: true, description: 'Te has registrado!'})
+                    setOpenAlert({open: true, description: 'Successful Enrollment!'})
                 })
                 .catch((err) => {
                     console.log(err)
                 })
             }
             else {
-                setOpenAlert({open: true, description:'No puedes registrate a tu misma clase'})
+                setOpenAlert({open: true, description:"You can't enroll in your won class"})
             }
         }
     }
@@ -64,7 +64,7 @@ function Class(props) {
                         <h1 className='text-left mb-3'>{classObj.name}</h1>
                         <p className='text-left' >{classObj.description}</p>
                         <h4 className='text-left'>{teacher.first_name + ' ' + teacher.last_name } </h4>
-                        <button onClick={enroll} className="btn btn-primary btnZira w-50 mt-4">Enroll now!!!!!</button>
+                        <button onClick={enroll} className="btn btn-primary btnZira w-50 mt-4">Enroll now!</button>
                     </div>
                     <img src={'https://zira-backend.s3-sa-east-1.amazonaws.com/' + classObj.class_photo} className='col-lg-4 pl-0' alt='class-img' />
                 </div>

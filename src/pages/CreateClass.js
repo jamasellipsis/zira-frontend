@@ -6,6 +6,7 @@ import ApiUsers from '../api/Users'
 import Alert from '../components/complex_comp/Alert'
 import "react-datepicker/dist/react-datepicker.css";
 import InputPhoto from '../auth/InputPhoto'
+import '../auth/Datepickers.css'
 
 
 function CreateClass(props) {
@@ -73,13 +74,14 @@ function CreateClass(props) {
     return !props.auth.isAuthenticated ? history.push('/') :
     <>
             <Alert show={openAlert} setShow={setOpenAlert} />
-            <div className='container'>
+            <div className='container my-3 col-11 col-md-8 col-lg-6'>
+                <h1>Create a class is very easy</h1>
                 <div className="form-group">
-                    <label for="name">Name</label>
+                    <label for="name"> Class Name</label>
                     <input type="text" className="form-control" id="name" onChange={e => {setData({...Data, name: e.target.value})}}/>
                 </div>
                 <div className="form-group">
-                    <label for="cost">Cost</label>
+                    <label for="cost">Cost per Class</label>
                     <input type="text" className="form-control" id="cost" onChange={e => {setData({...Data, cost: e.target.value})}}/>
                 </div>
                 <div class="form-group">
@@ -87,16 +89,28 @@ function CreateClass(props) {
                     <textarea class="form-control" id="description" rows="3" onChange={e => {setData({...Data, description: e.target.value})}}></textarea>
                 </div>
                 <div className='form-group'>
-                    <label htmlFor="date_start">Start date</label>
-                    <DatePicker id="date_start" selected={Data.date_start} onChange={date => setData({...Data, date_start: date})} className='m-3'/>
-                    <label htmlFor="date_end">End date</label>
-                    <DatePicker id="date_end" selected={Data.date_end} onChange={date => setData({...Data, date_end: date}  )} className='m-3'/>
+                    <label htmlFor="date_start" className="mr-1">Start Date and Time</label>
+                    <DatePicker
+                        id="date_start"
+                        selected={Data.date_start}
+                        onChange={date => setData({...Data, date_start: date})}
+                        showTimeInput
+                    />
+                </div>
+                <div className='form-group'>
+                    <label htmlFor="date_end" className="mr-1">End Date and Time</label>
+                    <DatePicker
+                        id="date_end"
+                        selected={Data.date_end}
+                        onChange={date => setData({...Data, date_end: date}  )}
+                        showTimeInput
+                    />
                 </div>
                 <div className='form-group'>
                     <InputPhoto setPhoto={setPhoto} />
                 </div>
                 <div>
-                    <button onClick={submit}>Submit</button>
+                    <button onClick={submit} className="btnZira btn">Create Class</button>
                 </div>
             </div>
             </>

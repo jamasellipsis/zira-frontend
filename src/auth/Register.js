@@ -5,6 +5,7 @@ import ApiUsers from '../api/Users'
 import InputPhoto from './InputPhoto'
 import Alert from '../components/complex_comp/Alert'
 import DatePicker from "react-datepicker";
+import './Datepickers.css';
 
 
 function Register(props) {
@@ -14,7 +15,7 @@ function Register(props) {
         open: false,
         description: ''
     })
-    const [userData, setUserData] = useState({birth_date: new Date()})
+    const [userData, setUserData] = useState({birth_date: null})
 
     const submit = async e => {
         e.preventDefault()
@@ -87,7 +88,7 @@ function Register(props) {
                         </div>
                     </div>
                 )}
-                <InputGroup className="mb-3">
+                <InputGroup className="my-3">
                     <InputGroup.Prepend>
                     <InputGroup.Text id="basic-addon1" className='gray'><img src={require('../assets/icons/name.png')} width='20px' alt='username' /></InputGroup.Text>
                     </InputGroup.Prepend>
@@ -117,9 +118,23 @@ function Register(props) {
                     </InputGroup.Prepend>
                     <Form.Control name='password' type="password" placeholder="Password" />
                 </InputGroup>
-                <InputGroup>
-                    <label htmlFor="birth_date">Birth date</label>
-                    <DatePicker id="birth_date" selected={userData.birth_date} onChange={date => setUserData({...userData, birth_date: date}  )} className='m-3'/>
+                                
+                <InputGroup className="mb-3">
+                    <InputGroup.Prepend>
+                    <InputGroup.Text id="basic-addon1" className='gray'><img src={require('../assets/icons/calendar-black.svg')} width='20px' alt='password' /></InputGroup.Text>
+                    </InputGroup.Prepend>
+
+                        <DatePicker 
+                            id="birth_date"
+                            selected={userData.birth_date}
+                            onChange={date => setUserData({...userData, birth_date: date}  )}
+                            placeholderText="Birth Day"
+                            peekNextMonth
+                            showMonthDropdown
+                            showYearDropdown
+                            dropdownMode="select"
+                        />
+
                 </InputGroup>
                 <InputPhoto photo={photo} setPhoto={setPhoto} />
                {/*  <Form.Check name='check' type="checkbox" label="Check me out" className='mt-4 mb-4'/> */}

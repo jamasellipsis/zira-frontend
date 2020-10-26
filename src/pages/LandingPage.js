@@ -8,21 +8,19 @@ import OurTeam from '../components/complex_comp/our_team';
 import MeetTeachers from '../components/complex_comp/meet_teachers';
 import ClassesCarousel from '../components/complex_comp/classes_carou';
 
-function Home(props) {
+function LandingPage(props) {
   return (
     <div>
         <Banner auth={props.auth}/>
         <Card/>
-        <ClassesCarousel/>
         <Testimonial/>
         <ZiraCharacs/>
         <OurTeam/>
         <MeetTeachers/>
         <Demo/>
-        <a href="./landingpage" className="btn btnZira my-2"><h3>Go to Landing Page</h3></a>
     </div>
     
   );
 }
 
-export default Home;
+export default LandingPage;
