@@ -6,7 +6,6 @@ import Demo from '../components/complex_comp/demo';
 import ZiraCharacs from '../components/complex_comp/zira_characs'
 import OurTeam from '../components/complex_comp/our_team';
 import MeetTeachers from '../components/complex_comp/meet_teachers';
-import ClassesCarousel from '../components/complex_comp/classes_carou';
 
 function LandingPage(props) {
   return (

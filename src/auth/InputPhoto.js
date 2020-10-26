@@ -12,7 +12,7 @@ function InputPhoto(props) {
             <input type="file" className="custom-file-input" id="customFile" onChange={onFileChange}/>
             <label className="custom-file-label" for="customFile">Profile Photo</label>
         </div>
-        <img src={ImagePhoto} className="m-3 px-2" style={{maxWidth:"70%"}}></img>
+        <img src={ImagePhoto} alt="profile" className="m-3 px-2" style={{maxWidth:"70%"}}></img>
       </>
     ); 
   } 
