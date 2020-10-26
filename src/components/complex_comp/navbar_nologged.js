@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom'
 import { Navbar, Nav, Button } from 'react-bootstrap';
 import Login from '../../auth/Login'
 import Register from '../../auth/Register'
 import { Auth } from 'aws-amplify'
+import ApiUsers from '../../api/Users'
 import './navbar_nologged.css';
 
 
@@ -19,12 +20,21 @@ function NavbarNologged(props) {
       props.auth.setAuthStatus(false)
       props.auth.setUser(null)
       props.auth.setUserData(null)
+      setOpenLogin(false)
     } catch(error) {
       console.log(error)
     }
     history.push("/")
   }
 
+  useEffect(() => {
+    console.log(props.auth)
+      if (props.auth.user && typeof props.auth.userData === 'undefined') {
+        ApiUsers.getUserByName(props.auth.user.username)
+          .then(res => props.auth.setUserData(res.data[0]))
+      }
+  })
+  
   return (
     <div>
       <Navbar bg="zira" expand="md" sticky="top">
@@ -63,11 +73,17 @@ function NavbarNologged(props) {
             {props.auth.isAuthenticated && (
               <>
                 <img src={require('../../assets/icons/create.svg')} alt='star' style={{width: '3%', height: '3%', alignSelf: 'center'}} />
-                <Link className="nav-link light-text" to='/createclass'>Create a class</Link>
+                <Link className="nav-link light-text align-self-center" to='/createclass'>Create a class</Link>
                 <img src={require('../../assets/icons/search.svg')} alt='star' style={{width: '3%', height: '3%', alignSelf: 'center'}} />
-                <Link className="nav-link light-text" to='/learn'>Find classes</Link>
+                <Link className="nav-link light-text align-self-center" to='/learn'>Find classes</Link>
                 <img src={require('../../assets/icons/calendar.svg')} alt='star' style={{width: '3%', height: '3%', alignSelf: 'center'}} />
-                <Link className="nav-link light-text" to='/learn'>Schedule</Link>
+                <Link className="nav-link light-text align-self-center" to='/dashboard'>Dashboard</Link>
+                {props.auth.userData && (
+                    <img src={'https://zira-backend.s3-sa-east-1.amazonaws.com/' + props.auth.userData.profile_photo} 
+                    style={{width: '5%', height: '5%', alignSelf: 'center', cursor: 'pointer'}}
+                    className="rounded-circle img-thumbnail my-auto ml-4 mr-4"
+                    onClick={() => history.push('/profile')} alt='Profile_photo' />
+                )}
                 <Button className="nav-link btn-primary btnSend" onClick={logOut} >Log out</Button>
               </>
             )}

@@ -4,7 +4,7 @@ import './carou.css';
 import ApiClasses from '../../api/Classes';
 import ApiUsers from '../../api/Users';
 
-/*Classes's info for testing front */
+/*Classes's info for testing front
 const classes = [{
     photourl:require('../../assets/other_photos/class1.jpg'),
     title:"Finanzas",
@@ -40,7 +40,7 @@ const classes = [{
     teacher_photo:require('../../assets/sample_profile_photos/32.jpg'),
     teache_name:"Francisco Perez"
   },];
-
+*/
   /*This component creates the carousel */
 class ClassesCarousel extends React.Component {
     state = {
@@ -61,57 +61,63 @@ class ClassesCarousel extends React.Component {
             { width: 1750, itemsToShow: 6, pagination: false  },
         ]
 
+        
+    }
+
+    componentDidMount() {
         ApiClasses.getAll()
             .then(response => {
-                console.log("this is response data: ", response.data)
                 this.setClasses(response.data)
-            })
-        
-        this.state.classes.map((aClass) => {
-            return (
-                ApiUsers.getUserById(aClass.teacherid)
-                .then(response => {
-                    aClass.teacherPhoto = response.profile_photo;
-                    aClass.teacherName = response.nick_name;
+                this.state.classes.forEach((aClass) => {
+                    ApiUsers.getUserById(aClass.teacherId)
+                    .then(response => {
+                        aClass.teacherPhoto = response.data[0].profile_photo;
+                        aClass.teacherName = response.data[0].username;
+                        console.log(aClass)
+                    })
                 })
-            )
-        })
+            })
     }
     render() {
-    return (
-        <Carousel breakPoints={this.breakPoints} enableAutoPlay autoPlaySpeed={3000}>
-        {/*Individual cards: */}
-        {classes.map((i) => {
-            return(
-            <div className="col mx-auto mb-5" style={{height:"500px", overflow:"hidden"}}>
-                <div className="card rounded w-100 shadow" style={{height:"100%", overflow:"hidden"}}>
-                    <div className="row mw-100 mx-auto" style={{height:"35%", overflow:"hidden"}}>
-                        <img className="img-fluid rounded w-100" alt="" src={i.photourl}></img>
-                    </div>
-                    <div className="card-body h-20" style={{height:"13%", overflow:"hidden"}}>
-                        <h5 className="card-title text-bold">{i.name}</h5>
-                    </div>
-                    <div className="card-body" style={{height:"28%", overflow:"hidden"}}>
-                        <p className="card-title">{i.description}</p>
-                    </div>
-                    <div className="card-body my-0 py-0" style={{height:"4%"}}>
-                        <a href="/" className="card-link">Read More</a>
-                    </div>
-                    <div className="row" style={{height:"17%", overflow:"hidden"}}>
-                        <div className="col-4 my-auto">
-                            <a href="/"><img src={i.teacher_photo} className="rounded-circle img-thumbnail my-auto ml-4" alt="teacher"></img></a>
+        if (this.state.classes[0]) {
+            return (
+                <Carousel breakPoints={this.breakPoints} enableAutoPlay autoPlaySpeed={3000}>
+                {/*Individual cards: */}
+                {this.state.classes.map(i => {
+                    return(
+                    <div className="col mx-auto mb-5" style={{height:"500px", overflow:"hidden"}}>
+                        <div className="card rounded w-100 shadow" style={{height:"100%", overflow:"hidden"}}>
+                            <div className="row mw-100 mx-auto" style={{height:"35%", overflow:"hidden"}}>
+                                <img className="img-fluid rounded w-100" alt="" src={i.photourl}></img>
+                            </div>
+                            <div className="card-body h-20" style={{height:"13%", overflow:"hidden"}}>
+                                <h5 className="card-title text-bold">{i.name}</h5>
+                            </div>
+                            <div className="card-body" style={{height:"28%", overflow:"hidden"}}>
+                                <p className="card-title">{i.description}</p>
+                            </div>
+                            <div className="card-body my-0 py-0" style={{height:"4%"}}>
+                                <a href="/" className="card-link">Read More</a>
+                            </div>
+                            {this.state.classes[0].teacherName &&
+                            <div className="row" style={{height:"17%", overflow:"hidden"}}>
+                                    <h6 className="card-title text-bold my-auto text-left">{i.teacherName}</h6>
+                                <div className="col-4 my-auto">
+                                    <a href="/"><img src={i.teacherPhoto} className="rounded-circle img-thumbnail my-auto ml-4" alt="teacher"></img></a>
+                                </div>
+                            </div>
+                            }
                         </div>
-                        <div className="col-6 m-auto">
-                            <h6 className="card-title text-bold my-auto text-left">{i.teache_name}</h6>
-                        </div>
                     </div>
-                </div>
-            </div>
+                    )
+                    })
+                }
+                </Carousel>
             )
-            })
         }
-        </Carousel>
-    )
+        else {
+            return <></>
+        }
     }
 }
 

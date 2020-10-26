@@ -41,46 +41,32 @@ function Class(props) {
                 ApiUserClass.joinClass({userId: props.auth.userData.id, classId: classObj.id, status: 'current'})
                 .then(_ => {
                     setTimeout(function() {
-                        setOpenAlert({open: false, description: 'Te has registrado!'})
+                        setOpenAlert({open: false, description: ''})
                       }, 2000);
-                    setOpenAlert({open: true, description: 'Te has registrado!'})
+                    setOpenAlert({open: true, description: 'Successful Enrollment!'})
                 })
                 .catch((err) => {
                     console.log(err)
                 })
             }
             else {
-                setOpenAlert({open: true, description:'No puedes registrate a tu misma clase'})
+                setOpenAlert({open: true, description:"You can't enroll in your won class"})
             }
         }
     }
 
     return classObj && teacher ?
-            <div className='d-flex flex-column' >
+            <div className='d-flex flex-column w-100' >
                 <Login auth={props.auth} openModal={openLogin} setOpenModal={setOpenLogin} />
                 <Alert show={openAlert} setShow={setOpenAlert} />
-                <div className='container d-flex justify-content-between' >
-                    <div className='d-flex flex-column justify-content-around' >
-                        <h1 className='text-left'>{classObj.name}</h1>
-                        <p>{classObj.description}</p>
-                        <h2 className='text-left'>{teacher.first_name + ' ' + teacher.last_name } </h2>
-                        <button onClick={enroll} className="btn btn-primary btnZira w-50">Enroll now!!!!!</button>
+                <div className='d-flex justify-content-between m-3' >
+                    <div className='d-flex flex-column justify-content-around pr-5  col-lg-8' >
+                        <h1 className='text-left mb-3'>{classObj.name}</h1>
+                        <p className='text-left' >{classObj.description}</p>
+                        <h4 className='text-left'>{teacher.first_name + ' ' + teacher.last_name } </h4>
+                        <button onClick={enroll} className="btn btn-primary btnZira w-50 mt-4">Enroll now!</button>
                     </div>
-                    <img src='https://image.freepik.com/foto-gratis/amigos-camisetas-hablando-calle_23-2148218922.jpg' className='w-25 h-25 m-4' alt='class-img' />
-                </div>
-                <div className='d-flex justify-content-around' style={{background: '#cccccc'}} >
-                    <div className='p-3'>
-                        <h3>Class Duration</h3>
-                        <h4>duracion</h4>
-                    </div>
-                    <div className='p-3'>
-                        <h3>Class Size</h3>
-                        <h4>Cuanta people</h4>
-                    </div>
-                    <div className='p-3'>
-                        <h3>Price per Learner (USD)</h3>
-                        <h4>{classObj.cost}</h4>
-                    </div>
+                    <img src={'https://zira-backend.s3-sa-east-1.amazonaws.com/' + classObj.class_photo} className='col-lg-4 pl-0' alt='class-img' />
                 </div>
             </div>
             /* In case of the code passed as params doesn't exist */

@@ -3,7 +3,7 @@ import React from 'react';
 
 const Demo = () => {
     return (
-        <div className="row"  style={{backgroundColor:"#7F8585"}}>
+        <div className="row"  style={{backgroundColor:"#9DA6A6"}}>
           <div className="col-sm-12">
             <div style={{height:"4rem"}}>
                 <h1 className="light-text text-center py-4" style={{fontWeight:"bold"}}>Demo</h1>

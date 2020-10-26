@@ -1,0 +1,11 @@
+input {
+    border: none !important;
+    background-color: #eeeded;
+    line-height: 1.5 !important;
+    width: 100%;
+    padding: 6px 12px;
+}
+
+.react-datepicker-wrapper {
+    flex: 1 1 auto;
+}

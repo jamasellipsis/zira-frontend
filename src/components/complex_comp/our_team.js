@@ -8,7 +8,7 @@ const linkedinIcon = require('../../assets/icons/linkedin.png')
 /*Member's info*/
 const members = [{
     photourl:require('../../assets/team_photos/miguel.jpg'),
-    name:"Miguel A. Chipamocha",
+    name:"Miguel A. Cipamocha",
     rol:"Game Developer",
     linkedinurl:"https://www.linkedin.com/in/miguel-cipamocha/",
 },
@@ -32,7 +32,7 @@ const members = [{
 },
 {
     photourl:require('../../assets/team_photos/juan.jpeg'),
-    name:"Juan D. Suarez",
+    name:"Juan David Suarez",
     rol:"Game Developer",
     linkedinurl:"https://www.linkedin.com/in/juandavidsuarez/",
 },];
@@ -44,8 +44,9 @@ class OurTeam extends React.Component{
         this.breakPoints = [
           { width: 1, itemsToShow: 1, pagination: false  },
           { width: 700, itemsToShow: 2, pagination: false },
-          { width: 900, itemsToShow: 3, pagination: false },
-          { width: 1000, itemsToShow: 5, pagination: false  },
+          { width: 800, itemsToShow: 3, pagination: false },
+          { width: 850, itemsToShow: 4, pagination: false },
+          { width: 1060, itemsToShow: 5, pagination: false  },
         ]
       }
     render() {
@@ -58,12 +59,12 @@ class OurTeam extends React.Component{
                 {/*Individual cards: */}
                 {members.map((i) => {
                     return(
-                        <div className="col mx-auto mt-3">
+                        <div className="col mx-auto mt-3" key={i.name}>
                         <div className="card border-0" style={{backgroundColor:"#94D0D3", height:"100%"}}>
-                            <img className="img-fluid rounded-circle w-90 mx-auto" alt="" src={i.photourl} style={{height:"50%"}}></img>
-                            <div className="card-body" style={{height:"50%"}}>
-                                <h4 className="card-title .text-wrap">{i.name}</h4>
-                                <h5 className="card-title">{i.rol}</h5>
+                            <img className="img-fluid rounded-circle w-90 mx-auto" alt="" src={i.photourl} style={{maxHeight:"50%"}}></img>
+                            <div className="card-body mx-auto" style={{height:"50%", width:"80%"}}>
+                                <h5 className="card-title">{i.name}</h5>
+                                <p className="card-title mx-auto" style={{width:"80%"}}>{i.rol}</p>
                                 <a href={i.linkedinurl} target="_blank" rel="noopener noreferrer" style={{height:"20%"}}> <img src={linkedinIcon} alt="linkedin" style={{height:"15%"}}></img> </a>
                             </div>
                         </div>

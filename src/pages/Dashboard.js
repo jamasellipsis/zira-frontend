@@ -20,7 +20,7 @@ function Dashboard(props) {
         })
     }
   })
-  console.log("these are the classes---->", classes);
+
   return (
     <div>
       {!props.auth.isAuthenticated ? history.push('/') : 
