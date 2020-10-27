@@ -19,7 +19,7 @@ function Home(props) {
         <OurTeam/>
         <MeetTeachers/>
         <Demo/>
-        <a href="./landingpage" className="btn btnZira my-2"><h3>Go to Landing Page</h3></a>
+        <a href="./landingpage" className="btn btnSend my-2" style={{height:"2.5rem"}}><p>Go to Landing Page</p></a>
     </div>
     
   );

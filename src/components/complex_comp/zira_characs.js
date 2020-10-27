@@ -21,7 +21,7 @@ class ZiraCharacs extends React.Component{
     render (){
         return (
             <div className="container-fluid my-4">
-                <h2>Create High Engaging Live Classes</h2>
+                <h2 style={{fontWeight:"bold"}}>Create High Engaging Live Classes</h2>
                 <div className="row mt-4">
                     {characs.map((i) => {
                         return(
