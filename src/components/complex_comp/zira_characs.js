@@ -7,12 +7,12 @@ const characs = [{
     description:"Zira allows video and voice interactions between participants inside the virtual rooms, almost like in a real classroom"
 },
 {
-    photourl:require('../../assets/sample_profile_photos/interaction.jpg'),
+    photourl:require('../../assets/sample_profile_photos/networking.jpg'),
     title:"Networking",
     description:"You can get in the classes before it begins, and can stay after it finishes, the perfect time for getting new contacts and friends"
 },
 {
-    photourl:require('../../assets/sample_profile_photos/interaction.jpg'),
+    photourl:require('../../assets/sample_profile_photos/worldwide.jpg'),
     title:"From Everywhere",
     description:"You can teach and learn from everywhere around the world"
 }];

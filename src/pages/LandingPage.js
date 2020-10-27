@@ -21,7 +21,7 @@ function LandingPage(props) {
             <h2 className="card-title" style={{fontWeight:"bold"}}>Our inspiration</h2>
             <p className="card-text" style={{fontSize:"1.2rem"}}>Explore any interest over live video chat and interactive classes! Discover fun, social, and innovative learning experiences.</p>
             <p className="card-text">Classes from $10.</p>
-            <a href="/learn" className="btn btn-primary btnZira">Check our Github</a>
+            <a href="https://github.com/jamasellipsis" target="_blank" rel="noopener noreferrer" className="btn btn-primary btnZira">Check our Github</a>
             </div>
         </div> 
         <OurTeam/>

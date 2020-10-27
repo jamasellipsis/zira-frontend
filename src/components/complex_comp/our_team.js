@@ -4,6 +4,8 @@ import './carou.css';
 
 /* Social networks icons */
 const linkedinIcon = require('../../assets/icons/linkedin.png')
+const twitterIcon = require('../../assets/icons/twitter.png')
+const githubIcon = require('../../assets/icons/github.png')
 
 /*Member's info*/
 const members = [{
@@ -11,30 +13,40 @@ const members = [{
     name:"Miguel A. Cipamocha",
     rol:"Game Developer",
     linkedinurl:"https://www.linkedin.com/in/miguel-cipamocha/",
+    twitterurl: "https://twitter.com/Miguel_C06",
+    githuburl: "https://github.com/MiguelCF06"
 },
 {
     photourl:require('../../assets/team_photos/alejandro.jpeg'),
     name:"Alejandro Castiblanco",
     rol:"Full-stack Developer",
     linkedinurl:"https://www.linkedin.com/in/alejocasti/",
+    twitterurl: "https://twitter.com/AlejoPrieto7",
+    githuburl: "https://github.com/AlejoCasti"
 },
 {
     photourl:require('../../assets/team_photos/anderson.jpeg'),
     name:"Anderson Castiblanco",
     rol:"Front-End Developer",
     linkedinurl:"https://www.linkedin.com/in/andergcp/",
+    twitterurl: "https://twitter.com/Andergcp",
+    githuburl: "https://github.com/andergcp"
 },
 {
     photourl:require('../../assets/team_photos/santiago.jpeg'),
     name:"Santiago Gallego",
     rol:"Back-End Developer",
     linkedinurl:"https://www.linkedin.com/in/santiago--gallego/",
+    twitterurl: "https://twitter.com/santiag57521897",
+    githuburl: "https://github.com/Santiago-Gallego"
 },
 {
     photourl:require('../../assets/team_photos/juan.jpeg'),
     name:"Juan David Suarez",
     rol:"Game Developer",
     linkedinurl:"https://www.linkedin.com/in/juandavidsuarez/",
+    twitterurl: "https://twitter.com/juandsuarezz1",
+    githuburl: "https://github.com/juandsuarezz"
 },];
 
 /* Out Team section */
@@ -65,7 +77,17 @@ class OurTeam extends React.Component{
                             <div className="card-body mx-auto" style={{height:"50%", width:"80%"}}>
                                 <h5 className="card-title">{i.name}</h5>
                                 <p className="card-title mx-auto" style={{width:"80%"}}>{i.rol}</p>
-                                <a href={i.linkedinurl} target="_blank" rel="noopener noreferrer" style={{height:"20%"}}> <img src={linkedinIcon} alt="linkedin" style={{height:"15%"}}></img> </a>
+                                <div className="row">
+                                    <div className="col-4">
+                                        <a href={i.linkedinurl} className="mx-auto" target="_blank" rel="noopener noreferrer" style={{maxWidth:"100%"}}> <img src={linkedinIcon} alt="linkedin" style={{height:"50%"}}></img> </a>
+                                    </div>
+                                    <div className="col-4">
+                                        <a href={i.twitterurl} className="mx-auto" target="_blank" rel="noopener noreferrer" style={{maxWidth:"100%"}}> <img src={twitterIcon} alt="linkedin" style={{height:"50%"}}></img> </a>
+                                    </div>
+                                    <div className="col-4">
+                                        <a href={i.githuburl} className="mx-auto" target="_blank" rel="noopener noreferrer" style={{maxWidth:"100%"}}> <img src={githubIcon} alt="linkedin" style={{height:"50%"}}></img> </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         </div>  
