@@ -4,43 +4,43 @@ import './carou.css';
 import ApiClasses from '../../api/Classes';
 import ApiUsers from '../../api/Users';
 
-/*Classes's info for testing front
+/*Classes's info for testing front*/
 const classes = [{
     photourl:require('../../assets/other_photos/class1.jpg'),
-    title:"Finanzas",
+    name:"Finances",
     description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dui orci, congue a enim non, ultricies porttitor erat. Mauris vel ornare diam. Sed vel maximus enim. Morbi aliquam non mauris vel imperdiet. Ut blandit massa eget ultrices aliquam. Donec ut nulla nec metus facilisis congue. Aenean vitae viverra lorem. Nam congue lobortis molestie. Phasellus vitae vulputate orci. Vestibulum eu eros leo. Nullam pulvinar elit est, eget aliquet neque dapibus eu. Nam vestibulum sodales mi quis gravida. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed lobortis arcu mollis ullamcorper dictum.Lore",
-    teacher_photo:require('../../assets/sample_profile_photos/0.jpg'),
-    teache_name:"Francisco Perez"
+    teacherPhoto:require('../../assets/sample_profile_photos/0.jpg'),
+    teacherName:"Francisco Perez"
   },
   {
     photourl:require('../../assets/other_photos/class2.jpg'),
-    title:"Diseño",
+    name:"Design",
     description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dui orci, congue a enim non, ultricies porttitor erat. Mauris vel ornare diam. Sed vel maximus enim. Morbi aliquam non mauris vel imperdiet. Ut blandit massa eget ultrices aliquam. Donec ut nulla nec metus facilisis congue. Aenean vitae viverra lorem. Nam congue lobortis molestie. Phasellus vitae vulputate orci. Vestibulum eu eros leo. Nullam pulvinar elit est, eget aliquet neque dapibus eu. Nam vestibulum sodales mi quis gravida. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed lobortis arcu mollis ullamcorper dictum.Full-stack Developer",
-    teacher_photo:require('../../assets/sample_profile_photos/33.jpg'),
-    teache_name:"Francisco Perez"
+    teacherPhoto:require('../../assets/sample_profile_photos/33.jpg'),
+    teacherName:"Diana Ortiz"
   },
   {
     photourl:require('../../assets/other_photos/class1.jpg'),
-    title:"Anderson Castiblanco lldldldldldldldldld",
+    name:"Painting",
     description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dui orci, congue a enim non, ultricies porttitor erat. Mauris vel ornare diam. Sed vel maximus enim. Morbi aliquam non mauris vel imperdiet. Ut blandit massa eget ultrices aliquam. Donec ut nulla nec metus facilisis congue. Aenean vitae viverra lorem. Nam congue lobortis molestie. Phasellus vitae vulputate orci. Vestibulum eu eros leo. Nullam pulvinar elit est, eget aliquet neque dapibus eu. Nam vestibulum sodales mi quis gravida. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed lobortis arcu mollis ullamcorper dictum.Front-End Developer",
-    teacher_photo:require('../../assets/sample_profile_photos/31.jpg'),
-    teache_name:"Francisco Perez"
+    teacherPhoto:require('../../assets/sample_profile_photos/31.jpg'),
+    teacherName:"Camila Garcia"
   },
   {
     photourl:require('../../assets/other_photos/class2.jpg'),
-    title:"Santiago Gallego",
+    name:"Design paterns",
     description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dui orci, congue a enim non, ultricies porttitor erat. Mauris vel ornare diam. Sed vel maximus enim. Morbi aliquam non mauris vel imperdiet. Ut blandit massa eget ultrices aliquam. Donec ut nulla nec metus facilisis congue. Aenean vitae viverra lorem. Nam congue lobortis molestie. Phasellus vitae vulputate orci. Vestibulum eu eros leo. Nullam pulvinar elit est, eget aliquet neque dapibus eu. Nam vestibulum sodales mi quis gravida. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed lobortis arcu mollis ullamcorper dictum.Back-End Developer",
-    teacher_photo:require('../../assets/sample_profile_photos/2.jpg'),
-    teache_name:"Francisco Perez"
+    teacherPhoto:require('../../assets/sample_profile_photos/2.jpg'),
+    teacherName:"Jhon Ramirez"
   },
   {
     photourl:require('../../assets/other_photos/class1.jpg'),
-    title:"Juan D. Suarez",
+    name:"Digital Marketing",
     description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dui orci, congue a enim non, ultricies porttitor erat. Mauris vel ornare diam. Sed vel maximus enim. Morbi aliquam non mauris vel imperdiet. Ut blandit massa eget ultrices aliquam. Donec ut nulla nec metus facilisis congue. Aenean vitae viverra lorem. Nam congue lobortis molestie. Phasellus vitae vulputate orci. Vestibulum eu eros leo. Nullam pulvinar elit est, eget aliquet neque dapibus eu. Nam vestibulum sodales mi quis gravida. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed lobortis arcu mollis ullamcorper dictum.Game Developer",
-    teacher_photo:require('../../assets/sample_profile_photos/32.jpg'),
-    teache_name:"Francisco Perez"
+    teacherPhoto:require('../../assets/sample_profile_photos/32.jpg'),
+    teacherName:"Silvana Perez"
   },];
-*/
+
   /*This component creates the carousel */
 class ClassesCarousel extends React.Component {
     state = {
@@ -79,11 +79,11 @@ class ClassesCarousel extends React.Component {
             })
     }
     render() {
-        if (this.state.classes[0]) {
+        if (classes[0]) {
             return (
                 <Carousel breakPoints={this.breakPoints} enableAutoPlay autoPlaySpeed={3000}>
                 {/*Individual cards: */}
-                {this.state.classes.map(i => {
+                {classes.map(i => {
                     return(
                     <div className="col mx-auto mb-5" style={{height:"500px", overflow:"hidden"}}>
                         <div className="card rounded w-100 shadow" style={{height:"100%", overflow:"hidden"}}>
@@ -93,17 +93,19 @@ class ClassesCarousel extends React.Component {
                             <div className="card-body h-20" style={{height:"13%", overflow:"hidden"}}>
                                 <h5 className="card-title text-bold">{i.name}</h5>
                             </div>
-                            <div className="card-body" style={{height:"28%", overflow:"hidden"}}>
+                            <div className="card-body" style={{height:"27%", overflow:"hidden"}}>
                                 <p className="card-title">{i.description}</p>
                             </div>
                             <div className="card-body my-0 py-0" style={{height:"4%"}}>
                                 <a href="/" className="card-link">Read More</a>
                             </div>
-                            {this.state.classes[0].teacherName &&
+                            {classes[0].teacherName &&
                             <div className="row" style={{height:"17%", overflow:"hidden"}}>
-                                    <h6 className="card-title text-bold my-auto text-left">{i.teacherName}</h6>
-                                <div className="col-4 my-auto">
-                                    <a href="/"><img src={i.teacherPhoto} className="rounded-circle img-thumbnail my-auto ml-4" alt="teacher"></img></a>
+                                <div className="col-6 m-auto">
+                                    <h6 className="card-title m-auto">{i.teacherName}</h6>
+                                </div>
+                                <div className="col-4 m-auto">
+                                    <a href="/"><img src={i.teacherPhoto} className="rounded-circle img-thumbnail m-auto" alt="teacher"></img></a>
                                 </div>
                             </div>
                             }

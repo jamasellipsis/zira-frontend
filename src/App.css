@@ -96,3 +96,23 @@ font-family: Nunito, Arial, "sans serif";
   background-repeat: no-repeat;
   background-size: cover;
   }
+
+  /* Deletes shadow in card elements */
+  .card {
+    box-shadow: none !important;
+  }
+
+  /* Landing page styles*/
+  .landingjumbotron {
+    background-color: white;
+    background-image: url("../src/assets/name_and_logo/banner_landing.svg") !important;
+    height: 40rem;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    }
+  
+  .green-text {
+    color: #40b9c1;
+  }
