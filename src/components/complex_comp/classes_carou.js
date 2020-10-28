@@ -6,37 +6,37 @@ import ApiUsers from '../../api/Users';
 
 /*Classes's info for testing front*/
 const classes = [{
-    photourl:require('../../assets/other_photos/class1.jpg'),
+    photourl:require('../../assets/other_photos/finance.jpg'),
     name:"Finances",
-    description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dui orci, congue a enim non, ultricies porttitor erat. Mauris vel ornare diam. Sed vel maximus enim. Morbi aliquam non mauris vel imperdiet. Ut blandit massa eget ultrices aliquam. Donec ut nulla nec metus facilisis congue. Aenean vitae viverra lorem. Nam congue lobortis molestie. Phasellus vitae vulputate orci. Vestibulum eu eros leo. Nullam pulvinar elit est, eget aliquet neque dapibus eu. Nam vestibulum sodales mi quis gravida. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed lobortis arcu mollis ullamcorper dictum.Lore",
+    description:"In this course, you’ll learn the basic fundamentals of corporate finance. You’ll identify foundational concepts in corporate finance, such as NPV, Compound and Simple Interest, and Annuities versus Perpetuities. You’ll also learn how to apply the NPV framework to calculating fixed-income valuation and Equity, using hypothetical examples of corporate projects. By the end of this course, you’ll have honed your skills in calculating risk and returns to optimize investments, and be able to assess the right set of financial information to achieve better returns for your firm.",
     teacherPhoto:require('../../assets/sample_profile_photos/0.jpg'),
     teacherName:"Francisco Perez"
   },
   {
-    photourl:require('../../assets/other_photos/class2.jpg'),
-    name:"Design",
-    description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dui orci, congue a enim non, ultricies porttitor erat. Mauris vel ornare diam. Sed vel maximus enim. Morbi aliquam non mauris vel imperdiet. Ut blandit massa eget ultrices aliquam. Donec ut nulla nec metus facilisis congue. Aenean vitae viverra lorem. Nam congue lobortis molestie. Phasellus vitae vulputate orci. Vestibulum eu eros leo. Nullam pulvinar elit est, eget aliquet neque dapibus eu. Nam vestibulum sodales mi quis gravida. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed lobortis arcu mollis ullamcorper dictum.Full-stack Developer",
+    photourl:require('../../assets/other_photos/ux.jpg'),
+    name:"UI/UX Design",
+    description:"This design-centric course examines the broad question of what an interface is and what role a designer plays in creating a user interface. Learning how to design and articulate meaning using color, type, and imagery is essential to making interfaces function clearly and seamlessly. Through a series of lectures and visual exercises, you will focus on the many individual elements and components that make up the skillset of an interface designer. By the end of this course, you will be able to describe the key formal elements of clear, consistent, and intuitive UI design, and apply your learned skills to the design of a static screen-based interface.",
     teacherPhoto:require('../../assets/sample_profile_photos/33.jpg'),
     teacherName:"Diana Ortiz"
   },
   {
-    photourl:require('../../assets/other_photos/class1.jpg'),
-    name:"Painting",
-    description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dui orci, congue a enim non, ultricies porttitor erat. Mauris vel ornare diam. Sed vel maximus enim. Morbi aliquam non mauris vel imperdiet. Ut blandit massa eget ultrices aliquam. Donec ut nulla nec metus facilisis congue. Aenean vitae viverra lorem. Nam congue lobortis molestie. Phasellus vitae vulputate orci. Vestibulum eu eros leo. Nullam pulvinar elit est, eget aliquet neque dapibus eu. Nam vestibulum sodales mi quis gravida. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed lobortis arcu mollis ullamcorper dictum.Front-End Developer",
+    photourl:require('../../assets/other_photos/art.jpg'),
+    name:"Contemporary Art",
+    description:"What is contemporary art? In this course, you’ll consider this question through more than 70 works of art made between 1980 and the present, with a focus on art from the past decade. You’ll hear directly from artists, architects, and designers from around the globe about their creative processes, materials, and inspiration.",
     teacherPhoto:require('../../assets/sample_profile_photos/31.jpg'),
     teacherName:"Camila Garcia"
   },
   {
-    photourl:require('../../assets/other_photos/class2.jpg'),
+    photourl:require('../../assets/other_photos/software.jpg'),
     name:"Design paterns",
-    description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dui orci, congue a enim non, ultricies porttitor erat. Mauris vel ornare diam. Sed vel maximus enim. Morbi aliquam non mauris vel imperdiet. Ut blandit massa eget ultrices aliquam. Donec ut nulla nec metus facilisis congue. Aenean vitae viverra lorem. Nam congue lobortis molestie. Phasellus vitae vulputate orci. Vestibulum eu eros leo. Nullam pulvinar elit est, eget aliquet neque dapibus eu. Nam vestibulum sodales mi quis gravida. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed lobortis arcu mollis ullamcorper dictum.Back-End Developer",
+    description:"This course extends object-oriented analysis and design by incorporating design patterns to create interactive applications. Through a survey of established design patterns, you will gain a foundation for more complex software applications. Finally, you will identify problematic software designs by referencing a catalog of code smells.",
     teacherPhoto:require('../../assets/sample_profile_photos/2.jpg'),
     teacherName:"Jhon Ramirez"
   },
   {
-    photourl:require('../../assets/other_photos/class1.jpg'),
+    photourl:require('../../assets/other_photos/digital-marketing.jpg'),
     name:"Digital Marketing",
-    description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dui orci, congue a enim non, ultricies porttitor erat. Mauris vel ornare diam. Sed vel maximus enim. Morbi aliquam non mauris vel imperdiet. Ut blandit massa eget ultrices aliquam. Donec ut nulla nec metus facilisis congue. Aenean vitae viverra lorem. Nam congue lobortis molestie. Phasellus vitae vulputate orci. Vestibulum eu eros leo. Nullam pulvinar elit est, eget aliquet neque dapibus eu. Nam vestibulum sodales mi quis gravida. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed lobortis arcu mollis ullamcorper dictum.Game Developer",
+    description:"The proliferation of digital technology gives businesses a diverse new set of tools to reach, engage, monitor, and respond to consumers to an unprecedented degree. The aggregated and voluminous digital data can also be leveraged to better target specific consumer segments. Following the Digital Marketing Channels: The Landscape, this course aims to give you a deeper understanding of core processes of planning a digital marketing campaign and the role of various digital channels in an integrated marketing communication.",
     teacherPhoto:require('../../assets/sample_profile_photos/32.jpg'),
     teacherName:"Silvana Perez"
   },];

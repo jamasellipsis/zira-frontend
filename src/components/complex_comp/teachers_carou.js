@@ -8,28 +8,28 @@ import ApiUsers from '../../api/Users';
 /*Teacher's info for testing front-end*/
 const teachers = [{
   photourl:require('../../assets/sample_profile_photos/0.jpg'),
-  name:"Miguel A. Chipamocha",
-  rol:"Game Developer",
+  name:"Francisco Pérez",
+  rol:"Finances",
 },
 {
   photourl:require('../../assets/sample_profile_photos/33.jpg'),
-  name:"Alejandro Castiblanco",
-  rol:"Full-stack Developer",
+  name:"Diana Ortiz",
+  rol:"Designer",
 },
 {
   photourl:require('../../assets/sample_profile_photos/31.jpg'),
-  name:"Anderson Castiblanco",
-  rol:"Front-End Developer",
+  name:"Camila Garcia",
+  rol:"Artist",
 },
 {
   photourl:require('../../assets/sample_profile_photos/2.jpg'),
-  name:"Santiago Gallego",
-  rol:"Back-End Developer",
+  name:"Jhon Ramirez",
+  rol:"Software Engineer",
 },
 {
   photourl:require('../../assets/sample_profile_photos/32.jpg'),
-  name:"Juan D. Suarez",
-  rol:"Game Developer",
+  name:"Silvana Pérez",
+  rol:"Marketing Expert",
 },];
 
 class TeachersCarou extends React.Component {
