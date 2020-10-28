@@ -7,15 +7,12 @@ const Banner = (props) => {
     const [openSignUp, setOpenSignUp] = useState(false)
     return (
         <div>
-            <div className="jumbotron jumbotron-image mb-0 jumbotronImg">
-                <h2 className="mb-4 light-text text-left ml-2">
-                    Interactive Live Classes
-                </h2>
-                <Button className="nav-link mx-lg-2 mx-auto btnSignup ml-5 mt-1" onClick={() => setOpenSignUp(true)}>Join for free</Button>
-                <Register auth={props.auth} openModal={openSignUp} setOpenModal={setOpenSignUp} />
+            <div className="jumbotron jumbotron-image mb-0 landingjumbotron">
             </div>
+            <Button className="nav-link mx-auto btnZira mt-3" onClick={() => setOpenSignUp(true)}>Join for free</Button>
+            <Register auth={props.auth} openModal={openSignUp} setOpenModal={setOpenSignUp} />
         </div>
     );
-}
+} 
 
 export default Banner;

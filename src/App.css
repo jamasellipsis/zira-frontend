@@ -97,22 +97,49 @@ font-family: Nunito, Arial, "sans serif";
   background-size: cover;
   }
 
-  /* Deletes shadow in card elements */
-  .card {
-    box-shadow: none !important;
+/* Deletes shadow in card elements */
+.card {
+  box-shadow: none !important;
+}
+
+/* Landing page styles*/
+.landingjumbotron {
+  background-color: white;
+  background-image: url("../src/assets/name_and_logo/banner_landing.svg") !important;
+  height: 30rem;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
   }
 
-  /* Landing page styles*/
+.green-text {
+  color: #40b9c1;
+}
+
+/*media Query for Banner image */
+@media (max-width: 1000px ){
   .landingjumbotron {
-    background-color: white;
-    background-image: url("../src/assets/name_and_logo/banner_landing.svg") !important;
-    height: 40rem;
-    width: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    }
-  
-  .green-text {
-    color: #40b9c1;
+    height: 25rem;
   }
+}
+@media (max-width: 830px ){
+  .landingjumbotron {
+    height: 20rem;
+  }
+}
+@media (max-width: 660px ){
+  .landingjumbotron {
+    height: 17rem;
+  }
+}
+@media (max-width: 560px ){
+  .landingjumbotron {
+    height: 14rem;
+  }
+}
+@media (max-width: 450px ){
+  .landingjumbotron {
+    height: 11rem;
+  }
+}
