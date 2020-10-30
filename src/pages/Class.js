@@ -66,7 +66,7 @@ function Class(props) {
                         <h4 className='text-left'>{teacher.first_name + ' ' + teacher.last_name } </h4>
                         <button onClick={enroll} className="btn btn-primary btnZira w-50 mt-4">Enroll now!</button>
                     </div>
-                    <img src={'https://zira-backend.s3-sa-east-1.amazonaws.com/' + classObj.class_photo} className='col-lg-4 pl-0' alt='class-img' />
+                    <img src={'https://zira-backend-b.s3-sa-east-1.amazonaws.com/' + classObj.class_photo} className='col-lg-4 pl-0' alt='class-img' />
                 </div>
             </div>
             /* In case of the code passed as params doesn't exist */

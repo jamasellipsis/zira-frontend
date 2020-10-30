@@ -33,7 +33,7 @@ function LandingPage(props) {
                 <h1 className="light-text text-center py-4" style={{fontWeight:"bold"}}>Demo</h1>
             </div>
             <div class="embed-responsive embed-responsive-1by1 w-50 my-3 mx-auto">
-              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen title="Zira Demo"></iframe>
+              <iframe class="embed-responsive-item" src="https://youtu.be/4e9t6RNb_gU" allowfullscreen title="Zira Demo"></iframe>
             </div>
           </div>
         </div>

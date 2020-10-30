@@ -33,7 +33,7 @@ function Dashboard(props) {
               {!classes ? <p>No past classes</p> :
                 classes.map(clas => {
                   return clas.user_classes[0].status === 'past' ?
-                    (<p>{clas.name}</p>)
+                    (<a href='/'>{clas.name}</a>)
                   : <></>
                 })}
             </div>
@@ -44,7 +44,7 @@ function Dashboard(props) {
               {!classes ? <p>No current classes</p> :
                 classes.map(clas => {
                   return clas.user_classes[0].status === 'current' ?
-                    (<p>{clas.name}</p>)
+                    (<a href='/'>{clas.name}</a>)
                   : <></>
                 })}
             </div>

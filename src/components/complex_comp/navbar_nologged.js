@@ -79,7 +79,7 @@ function NavbarNologged(props) {
                 <img src={require('../../assets/icons/calendar.svg')} alt='star' style={{width: '3%', height: '3%', alignSelf: 'center'}} />
                 <Link className="nav-link light-text align-self-center" to='/dashboard'>Dashboard</Link>
                 {props.auth.userData && (
-                    <img src={'https://zira-backend.s3-sa-east-1.amazonaws.com/' + props.auth.userData.profile_photo} 
+                    <img src={'https://zira-backend-b.s3-sa-east-1.amazonaws.com/' + props.auth.userData.profile_photo} 
                     style={{width: '5%', height: '5%', alignSelf: 'center', cursor: 'pointer'}}
                     className="rounded-circle img-thumbnail my-auto ml-4 mr-4"
                     onClick={() => history.push('/profile')} alt='Profile_photo' />

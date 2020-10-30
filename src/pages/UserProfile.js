@@ -30,7 +30,7 @@ function UserProfile(props) {
                             <div className="card">
                                 <div className="card-body">
                                     <div className="d-flex flex-column align-items-center text-center">
-                                        <img src={'https://zira-backend.s3-sa-east-1.amazonaws.com/' + props.auth.userData.profile_photo} alt="Admin" className="rounded-circle" width="150"/>
+                                        <img src={'https://zira-backend-b.s3-sa-east-1.amazonaws.com/' + props.auth.userData.profile_photo} alt="Admin" className="rounded-circle" width="150"/>
                                         <div className="mt-3">
                                             <h4>{props.auth.userData.first_name}</h4>
                                             <button class="btn btnZira">Update profile</button>

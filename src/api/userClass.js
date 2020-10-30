@@ -2,7 +2,7 @@ import axios from 'axios'
 
 class ApiUserClass {
 
-    URL = 'http://zirabackend-env.eba-tpevs9jb.us-east-2.elasticbeanstalk.com/api'
+    URL = 'http://zirabackendd-env.eba-stesnmpi.us-east-2.elasticbeanstalk.com/api'
     options = {
         headers: {
             'Content-type': 'application/json'
